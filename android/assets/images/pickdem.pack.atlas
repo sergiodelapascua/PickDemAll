@@ -1,0 +1,400 @@
+
+pickdem.pack.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Jump(10)
+  rotate: false
+  xy: 341, 16
+  size: 328, 496
+  orig: 328, 496
+  offset: 0, 0
+  index: -1
+Jump(3)
+  rotate: false
+  xy: 671, 114
+  size: 341, 450
+  orig: 341, 450
+  offset: 0, 0
+  index: -1
+Jump(4)
+  rotate: false
+  xy: 671, 566
+  size: 342, 447
+  orig: 342, 447
+  offset: 0, 0
+  index: -1
+Jump(9)
+  rotate: false
+  xy: 2, 514
+  size: 354, 499
+  orig: 354, 499
+  offset: 0, 0
+  index: -1
+Run(2)
+  rotate: false
+  xy: 358, 518
+  size: 257, 495
+  orig: 257, 495
+  offset: 0, 0
+  index: -1
+Run(6)
+  rotate: false
+  xy: 2, 15
+  size: 337, 497
+  orig: 337, 497
+  offset: 0, 0
+  index: -1
+seto
+  rotate: false
+  xy: 773, 12
+  size: 140, 100
+  orig: 140, 100
+  offset: 0, 0
+  index: -1
+tronco
+  rotate: false
+  xy: 671, 2
+  size: 100, 110
+  orig: 100, 110
+  offset: 0, 0
+  index: -1
+
+pickdem.pack2.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Jump(2)
+  rotate: false
+  xy: 2, 49
+  size: 328, 482
+  orig: 328, 482
+  offset: 0, 0
+  index: -1
+Run(1)
+  rotate: false
+  xy: 2, 533
+  size: 258, 487
+  orig: 258, 487
+  offset: 0, 0
+  index: -1
+Run(5)
+  rotate: false
+  xy: 262, 538
+  size: 299, 482
+  orig: 299, 482
+  offset: 0, 0
+  index: -1
+Run(8)
+  rotate: false
+  xy: 563, 540
+  size: 315, 480
+  orig: 315, 480
+  offset: 0, 0
+  index: -1
+arbol
+  rotate: false
+  xy: 880, 398
+  size: 120, 480
+  orig: 120, 480
+  offset: 0, 0
+  index: -1
+bloque(1)
+  rotate: false
+  xy: 814, 236
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+bloque(2)
+  rotate: false
+  xy: 814, 74
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+muro(2)
+  rotate: false
+  xy: 332, 56
+  size: 480, 480
+  orig: 480, 480
+  offset: 0, 0
+  index: -1
+nube(3)
+  rotate: false
+  xy: 880, 880
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: -1
+piedra
+  rotate: false
+  xy: 814, 2
+  size: 120, 70
+  orig: 120, 70
+  offset: 0, 0
+  index: -1
+
+pickdem.pack3.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Jump(7)
+  rotate: false
+  xy: 484, 491
+  size: 387, 477
+  orig: 387, 477
+  offset: 0, 0
+  index: -1
+agua
+  rotate: false
+  xy: 164, 32
+  size: 160, 130
+  orig: 160, 130
+  offset: 0, 0
+  index: -1
+enredadera
+  rotate: false
+  xy: 873, 498
+  size: 120, 470
+  orig: 120, 470
+  offset: 0, 0
+  index: -1
+flor
+  rotate: false
+  xy: 326, 184
+  size: 110, 140
+  orig: 110, 140
+  offset: 0, 0
+  index: -1
+moneda
+  rotate: false
+  xy: 326, 62
+  size: 100, 120
+  orig: 100, 120
+  offset: 0, 0
+  index: -1
+muro(3)
+  rotate: false
+  xy: 806, 167
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+muro(4)
+  rotate: false
+  xy: 806, 5
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+muro(5)
+  rotate: false
+  xy: 2, 164
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+muro(6)
+  rotate: false
+  xy: 484, 329
+  size: 480, 160
+  orig: 480, 160
+  offset: 0, 0
+  index: -1
+nube(1)
+  rotate: false
+  xy: 484, 7
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+plataforma(1)
+  rotate: false
+  xy: 2, 488
+  size: 480, 480
+  orig: 480, 480
+  offset: 0, 0
+  index: -1
+plataforma(2)
+  rotate: false
+  xy: 2, 326
+  size: 480, 160
+  orig: 480, 160
+  offset: 0, 0
+  index: -1
+plataforma(3)
+  rotate: false
+  xy: 164, 164
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+puerta
+  rotate: false
+  xy: 2, 2
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+
+pickdem.pack4.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Idle
+  rotate: false
+  xy: 684, 13
+  size: 276, 469
+  orig: 276, 469
+  offset: 0, 0
+  index: -1
+Jump(1)
+  rotate: false
+  xy: 720, 484
+  size: 290, 466
+  orig: 290, 466
+  offset: 0, 0
+  index: -1
+Jump(8)
+  rotate: false
+  xy: 2, 478
+  size: 385, 472
+  orig: 385, 472
+  offset: 0, 0
+  index: -1
+Run(3)
+  rotate: false
+  xy: 389, 484
+  size: 329, 466
+  orig: 329, 466
+  offset: 0, 0
+  index: -1
+Run(4)
+  rotate: false
+  xy: 372, 2
+  size: 310, 474
+  orig: 310, 474
+  offset: 0, 0
+  index: -1
+Run(7)
+  rotate: false
+  xy: 2, 4
+  size: 368, 472
+  orig: 368, 472
+  offset: 0, 0
+  index: -1
+
+pickdem.pack5.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Idle(4)
+  rotate: false
+  xy: 738, 468
+  size: 273, 463
+  orig: 273, 463
+  offset: 0, 0
+  index: -1
+Idle(5)
+  rotate: false
+  xy: 2, 52
+  size: 273, 463
+  orig: 273, 463
+  offset: 0, 0
+  index: -1
+Idle(6)
+  rotate: false
+  xy: 277, 35
+  size: 273, 463
+  orig: 273, 463
+  offset: 0, 0
+  index: -1
+Idle(7)
+  rotate: false
+  xy: 714, 2
+  size: 273, 464
+  orig: 273, 464
+  offset: 0, 0
+  index: -1
+Jump(5)
+  rotate: false
+  xy: 384, 500
+  size: 352, 431
+  orig: 352, 431
+  offset: 0, 0
+  index: -1
+Jump(6)
+  rotate: false
+  xy: 2, 517
+  size: 380, 414
+  orig: 380, 414
+  offset: 0, 0
+  index: -1
+escaleras
+  rotate: false
+  xy: 552, 18
+  size: 160, 480
+  orig: 160, 480
+  offset: 0, 0
+  index: -1
+
+pickdem.pack6.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Idle(10)
+  rotate: false
+  xy: 2, 482
+  size: 273, 467
+  orig: 273, 467
+  offset: 0, 0
+  index: -1
+Idle(2)
+  rotate: false
+  xy: 2, 14
+  size: 273, 466
+  orig: 273, 466
+  offset: 0, 0
+  index: -1
+Idle(3)
+  rotate: false
+  xy: 277, 16
+  size: 273, 465
+  orig: 273, 465
+  offset: 0, 0
+  index: -1
+Idle(8)
+  rotate: false
+  xy: 552, 484
+  size: 273, 465
+  orig: 273, 465
+  offset: 0, 0
+  index: -1
+Idle(9)
+  rotate: false
+  xy: 277, 483
+  size: 273, 466
+  orig: 273, 466
+  offset: 0, 0
+  index: -1
+muro(1)
+  rotate: false
+  xy: 552, 2
+  size: 160, 480
+  orig: 160, 480
+  offset: 0, 0
+  index: -1
+nube(2)
+  rotate: false
+  xy: 827, 469
+  size: 160, 480
+  orig: 160, 480
+  offset: 0, 0
+  index: -1
