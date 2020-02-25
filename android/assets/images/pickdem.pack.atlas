@@ -62,13 +62,6 @@ buho(1)
   index: -1
 buho(2)
   rotate: false
-  xy: 617, 518
-  size: 78, 50
-  orig: 78, 50
-  offset: 0, 0
-  index: -1
-buho(3)
-  rotate: false
   xy: 671, 2
   size: 78, 82
   orig: 78, 82

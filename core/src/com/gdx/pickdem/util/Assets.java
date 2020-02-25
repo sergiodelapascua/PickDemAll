@@ -44,18 +44,13 @@ public class Assets implements Disposable, AssetErrorListener {
 //=======================================================================
     public class PickDemAssets {
 
-        public final TextureAtlas.AtlasRegion standingRight;
-        public final TextureAtlas.AtlasRegion jumpingRight;
-        public final TextureAtlas.AtlasRegion walkingRight;
-
         public final Animation walkingRightAnimation;
         public final Animation jumpingRightAnimation;
         public final Animation standingRightAnimation;
 
+        public final Animation owlAnimation;
+
         public PickDemAssets(TextureAtlas atlas) {
-            standingRight = atlas.findRegion(Constants.STANDING_RIGHT);
-            jumpingRight = atlas.findRegion(Constants.JUMPING_RIGHT);
-            walkingRight = atlas.findRegion(Constants.WALKING_RIGHT);
 
             Array<TextureAtlas.AtlasRegion> walkingRightFrames = new Array<TextureAtlas.AtlasRegion>();
             walkingRightFrames.add(atlas.findRegion(Constants.WALKING_RIGHT));
@@ -93,6 +88,11 @@ public class Assets implements Disposable, AssetErrorListener {
             standingRightFrames.add(atlas.findRegion("Idle(9)"));
             standingRightFrames.add(atlas.findRegion("Idle(10)"));
             standingRightAnimation = new Animation(Constants.STAND_LOOP_DURTATION, standingRightFrames, Animation.PlayMode.LOOP);
+
+            Array<TextureAtlas.AtlasRegion> owl = new Array<TextureAtlas.AtlasRegion>();
+            owl.add(atlas.findRegion("buho(1)"));
+            owl.add(atlas.findRegion("buho(2)"));
+            owlAnimation = new Animation(Constants.OWL_LOOP_DURATION, owl, Animation.PlayMode.LOOP);
         }
     }
 }

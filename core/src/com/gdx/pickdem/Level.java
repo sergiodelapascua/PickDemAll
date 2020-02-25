@@ -3,6 +3,7 @@ package com.gdx.pickdem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
 import com.gdx.pickdem.entity.Robot;
 import com.gdx.pickdem.util.Constants;
@@ -10,10 +11,12 @@ import com.gdx.pickdem.util.Constants;
 public class Level {
 
     Robot robot;
+    Owl owl;
     DelayedRemovalArray<Platform> platforms;
 
     public Level() {
         robot = new Robot();
+        owl = new Owl(robot);
         platforms = new DelayedRemovalArray<Platform>();
         platforms.add(new Platform(10, 30, 20, 20));
         platforms.add(new Platform(60, 60, 20, 20));
@@ -21,6 +24,7 @@ public class Level {
 
     public void update(float delta) {
         robot.update(delta, platforms);
+        owl.update(delta);
     }
 
     public void render(SpriteBatch batch, ShapeRenderer renderer) {
@@ -47,6 +51,7 @@ public class Level {
 
         batch.begin();
         robot.render(batch);
+        owl.render(batch);
         batch.end();
     }
 
