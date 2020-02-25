@@ -2,6 +2,7 @@ package com.gdx.pickdem;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
@@ -15,11 +16,8 @@ public class Level {
     DelayedRemovalArray<Platform> platforms;
 
     public Level() {
-        robot = new Robot();
-        owl = new Owl(robot);
         platforms = new DelayedRemovalArray<Platform>();
-        platforms.add(new Platform(10, 30, 20, 20));
-        platforms.add(new Platform(60, 60, 20, 20));
+        initLevel();
     }
 
     public void update(float delta) {
@@ -34,25 +32,45 @@ public class Level {
         for (Platform platform : platforms)
             platform.render(renderer);
 
+        renderer.setColor(1, 0, 0, 1);
         renderer.line(0,0,200,0);
 
         /*renderer.line(10,0,10,80);
-        renderer.line(30,0,30,80);
+        renderer.line(30,0,30,80);*/
 
-        float leftFoot = robot.position.x;
+        /*float leftFoot = robot.position.x;
         float rightFoot = robot.position.x + Constants.ROBOT_STANCE_WIDTH;
+        float middle = robot.position.x + Constants.ROBOT_STANCE_WIDTH/2;
         //leftFoot = robot.position.x - Constants.ROBOT_STANCE_WIDTH / 2;
         //rightFoot = robot.position.x + Constants.ROBOT_STANCE_WIDTH / 2;
+        renderer.setColor(1, 1, 1, 1);
+        renderer.line(owl.position.x, 0, owl.position.x, 100);
+        renderer.line(owl.position.x+Constants.OWL_STANCE_WIDTH, 0, owl.position.x + Constants.OWL_STANCE_WIDTH, 100);
+        renderer.line(0, owl.position.y, 100, owl.position.y);
+        //renderer.line(0, 0, 100, 100);
         renderer.setColor(1, 0, 0, 1);
         renderer.line(leftFoot, 0, leftFoot, 100);
         renderer.setColor(0, 1, 0, 1);
-        renderer.line(rightFoot, 0, rightFoot, 100);*/
+        renderer.line(rightFoot, 0, rightFoot, 100);
+        renderer.setColor(0, 0, 1, 1);
+        renderer.line(middle, 0, middle, 100);
+        renderer.line(-100, robot.position.y, 100, robot.position.y);
+        renderer.line(-100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT, 100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT);*/
+
+        //=========
         renderer.end();
 
         batch.begin();
         robot.render(batch);
         owl.render(batch);
         batch.end();
+    }
+
+    private void initLevel(){
+        platforms.add(new Platform(10, 30, 20, 20));
+        platforms.add(new Platform(60, 60, 20, 20));
+        robot = new Robot(new Vector2(20, Constants.ROBOT_EYE_HEIGHT));
+        owl = new Owl(robot);
     }
 
 }

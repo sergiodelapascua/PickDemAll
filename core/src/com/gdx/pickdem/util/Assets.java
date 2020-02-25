@@ -92,6 +92,7 @@ public class Assets implements Disposable, AssetErrorListener {
             Array<TextureAtlas.AtlasRegion> owl = new Array<TextureAtlas.AtlasRegion>();
             owl.add(atlas.findRegion("buho(1)"));
             owl.add(atlas.findRegion("buho(2)"));
+            owl.add(atlas.findRegion("buho(1)"));
             owlAnimation = new Animation(Constants.OWL_LOOP_DURATION, owl, Animation.PlayMode.LOOP);
         }
     }

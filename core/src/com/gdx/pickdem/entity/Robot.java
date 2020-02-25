@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -15,6 +14,7 @@ import com.gdx.pickdem.util.Constants;
 public class Robot {
 
     public final static String TAG = Robot.class.getName();
+    public Vector2 spawn;
     public Vector2 position;
     private Vector2 lastFramePosition;
     private Facing facing;
@@ -25,11 +25,21 @@ public class Robot {
     private long walkStartTime;
 
 
-    public Robot() {
-        facing = Facing.RIGHT;
-        position = new Vector2(20, Constants.ROBOT_EYE_HEIGHT);
-        lastFramePosition = new Vector2(position);
+    public Robot(Vector2 spawn) {
+        this.spawn = spawn;
+        position = new Vector2();
+        lastFramePosition = new Vector2();
         velocity = new Vector2();
+
+        init();
+    }
+
+    public void init(){
+        position.set(spawn);
+        lastFramePosition.set(spawn);
+        velocity.setZero();
+
+        facing = Facing.RIGHT;
         jumpState = JumpState.FALLING;
         walkState = WalkState.STANDING;
     }
