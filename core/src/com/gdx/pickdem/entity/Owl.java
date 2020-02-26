@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.Constants;
+import com.gdx.pickdem.util.Enums.Facing;
+import com.gdx.pickdem.util.Utils;
 
 public class Owl {
 
@@ -88,29 +90,8 @@ public class Owl {
 
         }
 
-        batch.draw(
-                region.getTexture(),
-                position.x,
-                position.y - Constants.ROBOT_EYE_POSITION.y,
-                0,
-                0,
-                region.getRegionWidth(),
-                region.getRegionHeight(),
-                0.2f,
-                0.2f,
-                0,
-                region.getRegionX(),
-                region.getRegionY(),
-                region.getRegionWidth(),
-                region.getRegionHeight(),
-                mirror,
-                false);
+        Utils.drawOwlTextureRegion(batch, region, position, mirror);
 
 
-    }
-    //==============================================================================================
-    enum Facing {
-        LEFT,
-        RIGHT
     }
 }

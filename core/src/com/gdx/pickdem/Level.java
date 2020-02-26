@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
 import com.gdx.pickdem.entity.Robot;
@@ -11,11 +12,13 @@ import com.gdx.pickdem.util.Constants;
 
 public class Level {
 
-    Robot robot;
-    Owl owl;
-    DelayedRemovalArray<Platform> platforms;
+    private Robot robot;
+    private Owl owl;
+    private DelayedRemovalArray<Platform> platforms;
+    private Viewport viewport;
 
-    public Level() {
+    public Level(Viewport viewport) {
+        this.viewport = viewport;
         platforms = new DelayedRemovalArray<Platform>();
         initLevel();
     }
@@ -69,8 +72,11 @@ public class Level {
     private void initLevel(){
         platforms.add(new Platform(10, 30, 20, 20));
         platforms.add(new Platform(60, 60, 20, 20));
-        robot = new Robot(new Vector2(20, Constants.ROBOT_EYE_HEIGHT));
+        robot = new Robot(new Vector2(20, Constants.ROBOT_EYE_HEIGHT), this);
         owl = new Owl(robot);
     }
 
+    public Robot getRobot() {
+        return robot;
+    }
 }

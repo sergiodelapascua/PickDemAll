@@ -8,8 +8,14 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.gdx.pickdem.Level;
 import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.Constants;
+import com.gdx.pickdem.util.Enums;
+import com.gdx.pickdem.util.Enums.Facing;
+import com.gdx.pickdem.util.Enums.JumpState;
+import com.gdx.pickdem.util.Enums.WalkState;
+import com.gdx.pickdem.util.Utils;
 
 public class Robot {
 
@@ -24,9 +30,12 @@ public class Robot {
     private WalkState walkState;
     private long walkStartTime;
 
+    private Level level;
 
-    public Robot(Vector2 spawn) {
-        this.spawn = spawn;
+
+    public Robot(Vector2 spawnLocation, Level level) {
+        this.spawn = spawnLocation;
+        this.level = level;
         position = new Vector2();
         lastFramePosition = new Vector2();
         velocity = new Vector2();
@@ -179,7 +188,7 @@ public class Robot {
             region = Assets.instance.pickDemAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
             mirror = false;
 
-        } else if (facing == Facing.LEFT && jumpState != JumpState.GROUNDED) {
+        } else if (facing == Enums.Facing.LEFT && jumpState != JumpState.GROUNDED) {
 
             float jumpDuration = MathUtils.nanoToSec * (TimeUtils.nanoTime() - jumpStartTime);
             region = Assets.instance.pickDemAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
@@ -200,41 +209,6 @@ public class Robot {
 
         }
 
-        batch.draw(
-                region.getTexture(),
-                position.x,
-                position.y - Constants.ROBOT_EYE_POSITION.y,
-                0,
-                0,
-                region.getRegionWidth(),
-                region.getRegionHeight(),
-                0.05f,
-                0.05f,
-                0,
-                region.getRegionX(),
-                region.getRegionY(),
-                region.getRegionWidth(),
-                region.getRegionHeight(),
-                mirror,
-                false);
-
-
-    }
-
-    //==============================================================================================
-    enum Facing {
-        LEFT,
-        RIGHT
-    }
-
-    enum JumpState {
-        JUMPING,
-        FALLING,
-        GROUNDED
-    }
-
-    enum WalkState {
-        STANDING,
-        WALKING
+        Utils.drawRobotTextureRegion(batch, region, position, mirror);
     }
 }

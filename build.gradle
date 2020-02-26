@@ -97,6 +97,12 @@ project(":core") {
         }
     }
 
+    /*task copyLevels(type: Copy){
+        from "../GigaGalLevels/scenes"
+        into "../android/assets/levels"
+        exclude "MainScene.dt"
+    }*/
+
    /*task packTextures << {
         def pack = new File("android/assets/images/pickdem.pack.png")
         pack.delete()

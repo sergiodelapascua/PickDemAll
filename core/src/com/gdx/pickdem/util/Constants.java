@@ -25,7 +25,7 @@ public class Constants {
 
     public static final float ROBOT_MOVE_SPEED = WORLD_SIZE/2;
     public static final float OWL_MOVE_SPEED_X = WORLD_SIZE/4;
-    public static final float OWL_MOVE_SPEED_Y = WORLD_SIZE/10;
+    public static final float OWL_MOVE_SPEED_Y = WORLD_SIZE/8;
 
     public static final float JUMP_SPEED = WORLD_SIZE/2;
     public static final float MAX_JUMP_DURATION = .2f;

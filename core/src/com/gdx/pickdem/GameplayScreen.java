@@ -4,13 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.ChaseCam;
 import com.gdx.pickdem.util.Constants;
+import com.gdx.pickdem.util.LevelLoader;
 
 public class GameplayScreen extends ScreenAdapter {
 
@@ -21,19 +21,19 @@ public class GameplayScreen extends ScreenAdapter {
     ExtendViewport viewport;
     ShapeRenderer renderer;
     private ChaseCam chaseCam;
-    private Texture foto;
 
     @Override
     public void show() {
         AssetManager am = new AssetManager();
         Assets.instance.init(am);
 
-        level = new Level();
+        //level = new Level();
+        viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
+        level = LevelLoader.load("MainScene", viewport);
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        chaseCam = new ChaseCam(viewport.getCamera(), level.robot);
-        //foto = new Texture("/home/sergio/2DAM/JuegoAndroid/Nature Platformer Tileset [16x16][FREE] - RottingPixels/screenshot-1.png");
+        chaseCam = new ChaseCam(viewport.getCamera(), level.getRobot());
     }
 
     @Override
