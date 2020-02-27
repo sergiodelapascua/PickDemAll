@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
@@ -15,7 +16,9 @@ public class Assets implements Disposable, AssetErrorListener {
 
     public static final Assets instance = new Assets();
 
-    public PickDemAssets pickDemAssets;
+    public RobotAssets robotAssets;
+    public PlatformAssets platformAssets;
+    public OwlAssets owlAssets;
 
     private AssetManager assetManager;
 
@@ -29,7 +32,9 @@ public class Assets implements Disposable, AssetErrorListener {
         assetManager.finishLoading();
 
         TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS);
-        pickDemAssets = new PickDemAssets(atlas);
+        robotAssets = new RobotAssets(atlas);
+        platformAssets = new PlatformAssets(atlas);
+        owlAssets = new OwlAssets(atlas);
     }
 
     @Override
@@ -41,16 +46,19 @@ public class Assets implements Disposable, AssetErrorListener {
     public void dispose() {
         assetManager.dispose();
     }
-//=======================================================================
-    public class PickDemAssets {
+
+    //=======================================================================
+    public class RobotAssets {
+
+        //public final TextureAtlas.AtlasRegion plataforma;
 
         public final Animation walkingRightAnimation;
         public final Animation jumpingRightAnimation;
         public final Animation standingRightAnimation;
 
-        public final Animation owlAnimation;
+        public RobotAssets(TextureAtlas atlas) {
 
-        public PickDemAssets(TextureAtlas atlas) {
+            //plataforma = atlas.findRegion("plataforma(2)");
 
             Array<TextureAtlas.AtlasRegion> walkingRightFrames = new Array<TextureAtlas.AtlasRegion>();
             walkingRightFrames.add(atlas.findRegion(Constants.WALKING_RIGHT));
@@ -89,11 +97,33 @@ public class Assets implements Disposable, AssetErrorListener {
             standingRightFrames.add(atlas.findRegion("Idle(10)"));
             standingRightAnimation = new Animation(Constants.STAND_LOOP_DURTATION, standingRightFrames, Animation.PlayMode.LOOP);
 
+
+        }
+    }
+
+    public class OwlAssets {
+
+        public final Animation owlAnimation;
+
+        public OwlAssets(TextureAtlas atlas){
             Array<TextureAtlas.AtlasRegion> owl = new Array<TextureAtlas.AtlasRegion>();
             owl.add(atlas.findRegion("buho(1)"));
-            owl.add(atlas.findRegion("buho(2)"));
-            owl.add(atlas.findRegion("buho(1)"));
+            owl.add(atlas.findRegion("buho(3)"));
+            //owl.add(atlas.findRegion("buho(1)"));
+            //owl.add(atlas.findRegion("buho(2)"));
+            //owl.add(atlas.findRegion("buho(1)"));
             owlAnimation = new Animation(Constants.OWL_LOOP_DURATION, owl, Animation.PlayMode.LOOP);
+        }
+    }
+
+    public class PlatformAssets {
+
+        public final NinePatch platformNinePatch;
+
+        public PlatformAssets(TextureAtlas atlas) {
+            TextureAtlas.AtlasRegion region = atlas.findRegion("plat");
+            int edge = 2;
+            platformNinePatch = new NinePatch(region, edge, edge, edge, edge);
         }
     }
 }

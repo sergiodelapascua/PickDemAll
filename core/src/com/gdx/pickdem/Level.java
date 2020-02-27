@@ -3,6 +3,7 @@ package com.gdx.pickdem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.entity.Owl;
@@ -25,23 +26,21 @@ public class Level {
 
     public void update(float delta) {
         robot.update(delta, platforms);
-        owl.update(delta);
+        //TODO: Atento a que este activo
+        //owl.update(delta);
     }
 
     public void render(SpriteBatch batch, ShapeRenderer renderer) {
 
         renderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        for (Platform platform : platforms)
-            platform.render(renderer);
+        /*renderer.setColor(1, 0, 0, 1);
+        renderer.line(0,0,200,15);
 
-        renderer.setColor(1, 0, 0, 1);
-        renderer.line(0,0,200,0);
+        renderer.line(10,0,10,80);
+        renderer.line(30,0,30,80);
 
-        /*renderer.line(10,0,10,80);
-        renderer.line(30,0,30,80);*/
-
-        /*float leftFoot = robot.position.x;
+        float leftFoot = robot.position.x;
         float rightFoot = robot.position.x + Constants.ROBOT_STANCE_WIDTH;
         float middle = robot.position.x + Constants.ROBOT_STANCE_WIDTH/2;
         //leftFoot = robot.position.x - Constants.ROBOT_STANCE_WIDTH / 2;
@@ -64,19 +63,23 @@ public class Level {
         renderer.end();
 
         batch.begin();
+        for (Platform platform : platforms)
+            platform.render(batch);
         robot.render(batch);
         owl.render(batch);
         batch.end();
     }
 
     private void initLevel(){
-        platforms.add(new Platform(10, 30, 20, 20));
-        platforms.add(new Platform(60, 60, 20, 20));
         robot = new Robot(new Vector2(20, Constants.ROBOT_EYE_HEIGHT), this);
         owl = new Owl(robot);
     }
 
     public Robot getRobot() {
         return robot;
+    }
+
+    public Array<Platform> getPlatforms() {
+        return platforms;
     }
 }

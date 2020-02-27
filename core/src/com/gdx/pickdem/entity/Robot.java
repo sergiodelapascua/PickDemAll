@@ -62,11 +62,14 @@ public class Robot {
         if (jumpState != JumpState.JUMPING) {
             jumpState = JumpState.FALLING;
 
-            if (position.y - Constants.ROBOT_EYE_HEIGHT < 0) {
+            /*if (position.y - Constants.ROBOT_EYE_HEIGHT < 0) {
                 jumpState = JumpState.GROUNDED;
                 position.y = Constants.ROBOT_EYE_HEIGHT;
                 velocity.y = 0;
-            }
+            }*/
+            if (position.y - Constants.ROBOT_EYE_HEIGHT < -100)
+                this.init();
+
 
             for (Platform platform : platforms) {
                 if (landedOnPlatform(platform)) {
@@ -81,9 +84,10 @@ public class Robot {
             moveLeft(delta);
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D))
             moveRight(delta);
-        else {
+        else if ((Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S))&& jumpState != JumpState.FALLING){
+            position.y = position.y-2;
+        }else
             walkState = WalkState.STANDING;
-        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.Z) || Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
             switch (jumpState) {
@@ -172,39 +176,39 @@ public class Robot {
         if (facing == Facing.RIGHT && jumpState != JumpState.GROUNDED) {
 
             float jumpDuration = MathUtils.nanoToSec * (TimeUtils.nanoTime() - jumpStartTime);
-            region = Assets.instance.pickDemAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
+            region = Assets.instance.robotAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
             //region = Assets.instance.pickDemAssets.jumpingRight;
             mirror = false;
 
         } else if (facing == Facing.RIGHT && walkState == WalkState.STANDING) {
 
             float standDuration = MathUtils.nanoToSec * TimeUtils.nanoTime();
-            region = Assets.instance.pickDemAssets.standingRightAnimation.getKeyFrame(standDuration);
+            region = Assets.instance.robotAssets.standingRightAnimation.getKeyFrame(standDuration);
             mirror = false;
 
         } else if (facing == Facing.RIGHT && walkState == WalkState.WALKING) {
 
             float walkTimeSeconds = MathUtils.nanoToSec * (TimeUtils.nanoTime() - walkStartTime);
-            region = Assets.instance.pickDemAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
+            region = Assets.instance.robotAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
             mirror = false;
 
         } else if (facing == Enums.Facing.LEFT && jumpState != JumpState.GROUNDED) {
 
             float jumpDuration = MathUtils.nanoToSec * (TimeUtils.nanoTime() - jumpStartTime);
-            region = Assets.instance.pickDemAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
+            region = Assets.instance.robotAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
             //region = Assets.instance.pickDemAssets.jumpingRight;
             mirror = true;
 
         } else if (facing == Facing.LEFT && walkState == WalkState.STANDING) {
 
             float standDuration = MathUtils.nanoToSec * TimeUtils.nanoTime();
-            region = Assets.instance.pickDemAssets.standingRightAnimation.getKeyFrame(standDuration);
+            region = Assets.instance.robotAssets.standingRightAnimation.getKeyFrame(standDuration);
             mirror = true;
 
         } else if (facing == Facing.LEFT && walkState == WalkState.WALKING) {
 
             float walkTimeSeconds = MathUtils.nanoToSec * (TimeUtils.nanoTime() - walkStartTime);
-            region = Assets.instance.pickDemAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
+            region = Assets.instance.robotAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
             mirror = true;
 
         }

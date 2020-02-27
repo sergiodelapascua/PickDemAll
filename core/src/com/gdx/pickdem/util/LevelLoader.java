@@ -2,14 +2,17 @@ package com.gdx.pickdem.util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.Level;
+import com.gdx.pickdem.entity.Platform;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.File;
+import java.util.Comparator;
 
 public class LevelLoader {
 
@@ -18,59 +21,87 @@ public class LevelLoader {
     public static Level load(String levelName, Viewport viewport) {
 
         Level level = new Level(viewport);
-
-        // TODO: Construct the path to the level file
-        // Use the LEVEL_DIR constant, File.separator, the level name, and LEVEL_FILE_EXTENSION
-        //String path = Constants.LEVEL_DIR + File.separator + levelName + "." + Constants.LEVEL_FILE_EXTENSION;
         String path = "levels" + File.separator + levelName + "." + "dt";
 
-
+        FileHandle file = Gdx.files.internal(path);
+        JSONParser parser = new JSONParser();
         try {
-
-            // TODO: Get the level FileHandle object using Gdx.files.internal
-            FileHandle file = Gdx.files.internal(path);
-
-            // TODO: Create a new JSONParser
-            JSONParser parser = new JSONParser();
-
-            // TODO: get the root JSONObject by parsing the level file
-            // Use file.reader() to pass a file reader into parse() on the parser, then cast the result to a JSONObject
             JSONObject rootJsonObject = (JSONObject) parser.parse(file.reader());
 
-            // TODO: Log rootJsonObject.keySet().toString() to see the keys available in this JSONObject
-            Gdx.app.log(TAG, rootJsonObject.keySet().toString());
-
-            // TODO: Get the 'composite' object within the rootJsonObject
-            //JSONObject composite = (JSONObject) rootJsonObject.get(Constants.LEVEL_COMPOSITE);
             JSONObject composite = (JSONObject) rootJsonObject.get("composite");
 
-            // TODO: Log the keys available in the composite object
-            Gdx.app.log(TAG, composite.keySet().toString());
-
-            // TODO: Get the JSONArray behind the LEVEL_9PATCHES key
-            //JSONArray platforms = (JSONArray) composite.get(Constants.LEVEL_9PATCHES);
-            //JSONArray platforms = (JSONArray) composite.get(Constants.LEVEL_IMAGES);
-            JSONArray platforms = (JSONArray) composite.get("sImages");
-
-            // TODO: Get the first platform in the array
-            JSONObject firstPlatform = (JSONObject) platforms.get(0);
-
-            // TODO: Log the keys available in the platform object
-            Gdx.app.log(TAG, firstPlatform.keySet().toString());
+            JSONArray platforms = (JSONArray) composite.get("sImage9patchs");
+            loadPlatforms(platforms, level);
 
 
         } catch (Exception ex) {
-
-            // TODO: If there's an error, log the message using ex.getMessage()
-            // Be sure to log the error at the appropriate log level
             Gdx.app.error(TAG, ex.getMessage());
-
-            // TODO: Then log the error message defined in LEVEL_ERROR_MESSAGE
-            //Gdx.app.error(TAG, Constants.LEVEL_ERROR_MESSAGE);
-            Gdx.app.error(TAG, "There was a problem loading the level.");
+            Gdx.app.error(TAG, "ERROR AQUI DENTRO");
+            ex.printStackTrace();
         }
 
         return level;
+    }
+
+    private static float safeGetFloat(JSONObject object, String key){
+        Number number = (Number) object.get(key);
+        return (number == null) ? 0 : number.floatValue();
+    }
+
+    private static void loadPlatforms(JSONArray array, Level level) {
+
+        Array<Platform> platformArray = new Array<Platform>();
+
+        for (Object object : array) {
+            final JSONObject platformObject = (JSONObject) object;
+
+            final float x = safeGetFloat(platformObject, "x");
+
+            // TODO: Get the y position of the platform
+            // Use the LEVEL_Y_KEY constant we defined
+            // Not that this is the BOTTOM of the platform, not the top
+            // Also note that if the platform is at (0, 0), the x and y keys will be missing from the JSON
+            // Hence the need for the safeGetFloat() method defined above
+            final float y = safeGetFloat(platformObject, "y");
+
+            final float width = ((Number) platformObject.get("width")).floatValue();
+
+            // TODO: Get the platform height
+            final float height = ((Number) platformObject.get("height")).floatValue();
+
+            // TODO: Optional, log the location and dimensions of the platform
+            Gdx.app.log(TAG,
+                    "Loaded a platform at x = " + x + " y = " + (y + height) + " w = " + width + " h = " + height);
+
+            // TODO: Make a new platform with the dimensions we loaded
+            // Remember that the y position we loaded is the platform bottom, not top
+            final Platform platform = new Platform(x, y + height, width, height);
+
+            // TODO: Add the platform to the platformArray
+            platformArray.add(platform);
+
+            // TODO: Get the platform identifier
+            // Use the LEVEL_IDENTIFIER_KEY constant
+            final String identifier = (String) platformObject.get("itemIdentifier");
+        }
+
+        // TODO: Sort the platform array by descending position of the top of the platform
+        // We're doing this so lower platforms aren't hidden by higher platforms
+        // This one is tough. Check out the solution project if you run into trouble
+        platformArray.sort(new Comparator<Platform>() {
+            @Override
+            public int compare(Platform o1, Platform o2) {
+                if (o1.top < o2.top) {
+                    return 1;
+                } else if (o1.top > o2.top) {
+                    return -1;
+                }
+                return 0;
+            }
+        });
+
+        // TODO: Add all the platforms from platformArray to the level
+        level.getPlatforms().addAll(platformArray);
     }
 
 }

@@ -29,7 +29,8 @@ public class GameplayScreen extends ScreenAdapter {
 
         //level = new Level();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        level = LevelLoader.load("MainScene", viewport);
+        //level = LevelLoader.load("MainScene", viewport);
+        level = LevelLoader.load("Level1", viewport);
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
@@ -62,9 +63,6 @@ public class GameplayScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
-        /*batch.begin();
-        batch.draw(foto,0,0, Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        batch.end();*/
         renderer.setProjectionMatrix(viewport.getCamera().combined);
         level.render(batch, renderer);
     }

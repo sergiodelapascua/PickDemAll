@@ -1,7 +1,6 @@
 package com.gdx.pickdem.util;
 
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.gdx.pickdem.entity.Robot;
 public class ChaseCam {
 

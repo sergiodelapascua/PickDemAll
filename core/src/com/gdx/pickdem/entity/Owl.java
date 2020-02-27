@@ -80,18 +80,15 @@ public class Owl {
 
         if (facing == Facing.RIGHT ) {
             float flyDuration = MathUtils.nanoToSec* TimeUtils.nanoTime();
-            region = Assets.instance.pickDemAssets.owlAnimation.getKeyFrame(flyDuration);
+            region = Assets.instance.owlAssets.owlAnimation.getKeyFrame(flyDuration);
             mirror = true;
 
         } else if (facing == Facing.LEFT) {
             float flyDuration = MathUtils.nanoToSec* TimeUtils.nanoTime();
-            region = Assets.instance.pickDemAssets.owlAnimation.getKeyFrame(flyDuration);
+            region = Assets.instance.owlAssets.owlAnimation.getKeyFrame(flyDuration);
             mirror = false;
 
         }
-
         Utils.drawOwlTextureRegion(batch, region, position, mirror);
-
-
     }
 }
