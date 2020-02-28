@@ -7,6 +7,8 @@ public class Constants {
 
     public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final float WORLD_SIZE = 140;
+    public static final float COINS = 6;
+    public static final Vector2 POWERUP_CENTER = new Vector2(5, 6);
     public static final String TEXTURE_ATLAS = "images/pickdem.pack.atlas";
     public static final String STANDING_RIGHT = "Idle";
     public static final String JUMPING_RIGHT = "Jump(1)";

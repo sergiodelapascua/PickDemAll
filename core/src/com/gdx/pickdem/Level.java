@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
@@ -15,12 +14,12 @@ public class Level {
 
     private Robot robot;
     private Owl owl;
-    private DelayedRemovalArray<Platform> platforms;
+    private Array<Platform> platforms;
     private Viewport viewport;
 
     public Level(Viewport viewport) {
         this.viewport = viewport;
-        platforms = new DelayedRemovalArray<Platform>();
+        platforms = new Array<Platform>();
         initLevel();
     }
 

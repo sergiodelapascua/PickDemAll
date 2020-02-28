@@ -8,6 +8,26 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 public class Utils {
 
+    public static void drawCoinTextureRegion(SpriteBatch batch, TextureRegion region,float x, float y) {
+        batch.draw(
+                region.getTexture(),
+                x,
+                y,
+                0,
+                0,
+                region.getRegionWidth(),
+                region.getRegionHeight(),
+                1,
+                1,
+                0,
+                region.getRegionX(),
+                region.getRegionY(),
+                region.getRegionWidth(),
+                region.getRegionHeight(),
+                false,
+                false);
+    }
+
     public static void drawRobotTextureRegion(SpriteBatch batch, TextureRegion region,Vector2 position, boolean mirror) {
         batch.draw(
                 region.getTexture(),

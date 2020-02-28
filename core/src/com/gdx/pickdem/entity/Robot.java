@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.pickdem.Level;
 import com.gdx.pickdem.util.Assets;
@@ -16,6 +18,9 @@ import com.gdx.pickdem.util.Enums.Facing;
 import com.gdx.pickdem.util.Enums.JumpState;
 import com.gdx.pickdem.util.Enums.WalkState;
 import com.gdx.pickdem.util.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Robot {
 
@@ -31,6 +36,7 @@ public class Robot {
     private long walkStartTime;
 
     private Level level;
+    private DelayedRemovalArray<Coin> coins;
 
 
     public Robot(Vector2 spawnLocation, Level level) {
@@ -39,6 +45,7 @@ public class Robot {
         position = new Vector2();
         lastFramePosition = new Vector2();
         velocity = new Vector2();
+        coins = null;
 
         init();
     }
@@ -51,10 +58,36 @@ public class Robot {
         facing = Facing.RIGHT;
         jumpState = JumpState.FALLING;
         walkState = WalkState.STANDING;
+
+        generateCoins();
+    }
+
+    private void generateCoins() {
+        if(level.getPlatforms().size > 0) {
+            coins = new DelayedRemovalArray<Coin>();
+            List<Integer> platformIndex = new ArrayList<Integer>();
+            while (platformIndex.size() != Constants.COINS) {
+                int index = (int) (Math.random() * level.getPlatforms().size-1) + 1;
+                if (platformIndex.contains(index))
+                    continue;
+                else
+                    platformIndex.add(index);
+            }
+
+            for (Integer i : platformIndex) {
+                Platform p = level.getPlatforms().get(i);
+                float x = (float) ((Math.random() * ((p.right-10) - p.left)) + p.left);
+                //float x = (p.right - p.left)/2 + p.left;
+                float y = p.top + 1;
+                coins.add(new Coin(new Vector2(x, y)));
+            }
+        }
     }
 
     //==============================================================================================
     public void update(float delta, Array<Platform> platforms) {
+        if(coins == null)
+            generateCoins();
         lastFramePosition.set(position);
         velocity.y -= delta * Constants.GRAVITY;
         position.mulAdd(velocity, delta);
@@ -79,6 +112,27 @@ public class Robot {
                 }
             }
         }
+
+        Rectangle robotBounds = new Rectangle(
+                position.x,
+                position.y - Constants.ROBOT_EYE_HEIGHT,
+                Constants.ROBOT_STANCE_WIDTH,
+                Constants.ROBOT_EYE_HEIGHT);
+
+        coins.begin();
+        for (int i = 0; i < coins.size; i++) {
+            Coin c = coins.get(i);
+            Rectangle coinBounds = new Rectangle(
+                    c.position.x - Constants.POWERUP_CENTER.x,
+                    c.position.y - Constants.POWERUP_CENTER.y,
+                    Assets.instance.coinAssets.coin.getRegionWidth(),
+                    Assets.instance.coinAssets.coin.getRegionHeight()
+            );
+            if (robotBounds.overlaps(coinBounds)) {
+                coins.removeIndex(i);
+            }
+        }
+        coins.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
             moveLeft(delta);
@@ -170,6 +224,8 @@ public class Robot {
 
     //==============================================================================================
     public void render(SpriteBatch batch) {
+        for (Coin c : coins)
+            c.render(batch);
         TextureRegion region = null;
         boolean mirror = false;
 

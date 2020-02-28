@@ -19,6 +19,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public RobotAssets robotAssets;
     public PlatformAssets platformAssets;
     public OwlAssets owlAssets;
+    public CoinAssets coinAssets;
 
     private AssetManager assetManager;
 
@@ -35,6 +36,7 @@ public class Assets implements Disposable, AssetErrorListener {
         robotAssets = new RobotAssets(atlas);
         platformAssets = new PlatformAssets(atlas);
         owlAssets = new OwlAssets(atlas);
+        coinAssets = new CoinAssets(atlas);
     }
 
     @Override
@@ -124,6 +126,15 @@ public class Assets implements Disposable, AssetErrorListener {
             TextureAtlas.AtlasRegion region = atlas.findRegion("plat");
             int edge = 2;
             platformNinePatch = new NinePatch(region, edge, edge, edge, edge);
+        }
+    }
+
+    public class CoinAssets {
+
+        public final TextureAtlas.AtlasRegion coin;
+
+        public CoinAssets(TextureAtlas atlas) {
+            coin = atlas.findRegion("moneda");
         }
     }
 }
