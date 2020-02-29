@@ -15,6 +15,6 @@ public class Flower extends Environment{
     @Override
     public void render(SpriteBatch batch) {
         final TextureRegion region = Assets.instance.flowerAssets.flower;
-        Utils.drawCoinTextureRegion(batch, region, position.x,position.y);
+        Utils.drawTextureRegion(batch, region, position.x,position.y);
     }
 }

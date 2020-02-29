@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
+import com.gdx.pickdem.entity.Portal;
 import com.gdx.pickdem.entity.Robot;
 import com.gdx.pickdem.environment.BigRock;
 import com.gdx.pickdem.environment.Bush;
@@ -31,6 +32,9 @@ public class Level {
     private Wall walls;
     private Water water;
     private List<Environment> environments;
+    private Portal portal;
+    private boolean added;
+    private boolean complete;
 
     public Level(Viewport viewport) {
         this.viewport = viewport;
@@ -39,6 +43,9 @@ public class Level {
         maxX= Integer.MIN_VALUE;
         walls = null;
         water = null;
+        portal = null;
+        added = false;
+        complete = false;
         initLevel();
     }
 
@@ -57,6 +64,17 @@ public class Level {
 
         if (environments == null)
             generateEnvironment();
+
+        if(robot.getCollectedCoins() != 6) {
+            portal = null;
+            added = false;
+        }
+
+        if(portal != null) {
+            if(new Vector2(robot.position.x,robot.position.y - Constants.ROBOT_EYE_HEIGHT).dst(portal.position) < Constants.PORTAL_RADIUS){
+                complete = true;
+            }
+        }
 
         robot.update(delta, platforms);
         //TODO: Atento a que este activo
@@ -102,6 +120,8 @@ public class Level {
             platform.render(batch);
         for(Environment e : environments)
             e.render(batch);
+        if(portal != null)
+            portal.render(batch);
         robot.render(batch);
         owl.render(batch);
         batch.end();
@@ -124,11 +144,21 @@ public class Level {
         return maxX;
     }
 
+    public void addPortal(){
+        if(robot.getCollectedCoins() == 6){
+            int i = (int) (Math.random() * platforms.size - 1) + 1;
+            Platform p = platforms.get(i);
+            float x = (float) ((Math.random() * ((p.right - 10) - p.left)) + p.left);
+            float y = p.top + 1;
+            portal = new Portal(new Vector2(x,y));
+            added = true;
+        }
+    }
+
     public void generateEnvironment(){
         if(platforms.size > 0) {
             environments = new ArrayList<Environment>();
             List<Integer> platformIndex = new ArrayList<Integer>();
-            int quantity = (int) (platforms.size * 0.66);
             while (platformIndex.size() < 60) {
                 int index = (int) (Math.random() * platforms.size - 1) + 1;
                 /*if (platformIndex.contains(index))
@@ -140,7 +170,6 @@ public class Level {
             for (Integer i : platformIndex) {
                 Platform p = platforms.get(i);
                 float x = (float) ((Math.random() * ((p.right - 10) - p.left)) + p.left);
-                //float x = (p.right - p.left)/2 + p.left;
                 float y = p.top + 1;
                 int random = (int) (Math.random()*5);
                 switch (random){
@@ -162,5 +191,17 @@ public class Level {
                 }
             }
         }
+    }
+
+    public boolean isAdded() {
+        return added;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 }

@@ -14,10 +14,10 @@ public class Wall {
     public void render(SpriteBatch batch) {
         final TextureRegion region = Assets.instance.wallAssets.wall;
         for (int i = -48; i <= 480; i=i +48) {
-            Utils.drawWallTextureRegion(batch, region, -48, i);
+            Utils.drawTextureRegion(batch, region, -48, i);
         }
         for (int i = -48; i <= 480; i=i +48) {
-            Utils.drawWallTextureRegion(batch, region, endOfMap, i);
+            Utils.drawTextureRegion(batch, region, endOfMap, i);
         }
     }
 }

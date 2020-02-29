@@ -8,7 +8,6 @@ public class Platform {
     public float bottom;
     public float left;
     public float right;
-    private String plataformName;
 
 
     public Platform(float left, float top, float width, float height) {
@@ -16,7 +15,6 @@ public class Platform {
         this.bottom = top - height;
         this.left = left;
         this.right = left + width;
-        //this.plataformName = name;
     }
 
     public void render(SpriteBatch batch) {

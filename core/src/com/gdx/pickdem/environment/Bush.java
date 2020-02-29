@@ -15,6 +15,6 @@ public class Bush extends Environment{
     @Override
     public void render(SpriteBatch batch) {
         final TextureRegion region = Assets.instance.bushAssets.arbusto;
-        Utils.drawCoinTextureRegion(batch, region, position.x,position.y);
+        Utils.drawTextureRegion(batch, region, position.x,position.y);
     }
 }

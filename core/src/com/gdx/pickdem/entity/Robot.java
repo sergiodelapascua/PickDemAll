@@ -34,6 +34,7 @@ public class Robot {
     private long jumpStartTime;
     private WalkState walkState;
     private long walkStartTime;
+    private int collectedCoins;
 
     private Level level;
     private DelayedRemovalArray<Coin> coins;
@@ -51,6 +52,7 @@ public class Robot {
     }
 
     public void init(){
+        collectedCoins = 0;
         position.set(spawn);
         lastFramePosition.set(spawn);
         velocity.setZero();
@@ -65,6 +67,7 @@ public class Robot {
 
     private void generateCoins() {
         if(level.getPlatforms().size > 0) {
+            collectedCoins = 0;
             coins = new DelayedRemovalArray<Coin>();
             List<Integer> platformIndex = new ArrayList<Integer>();
             while (platformIndex.size() != Constants.COINS) {
@@ -89,6 +92,8 @@ public class Robot {
     public void update(float delta, Array<Platform> platforms) {
         if(coins == null)
             generateCoins();
+        if(collectedCoins == 6 && level.isAdded() == false)
+            level.addPortal();
         lastFramePosition.set(position);
         velocity.y -= delta * Constants.GRAVITY;
         position.mulAdd(velocity, delta);
@@ -124,13 +129,14 @@ public class Robot {
         for (int i = 0; i < coins.size; i++) {
             Coin c = coins.get(i);
             Rectangle coinBounds = new Rectangle(
-                    c.position.x - Constants.POWERUP_CENTER.x,
-                    c.position.y - Constants.POWERUP_CENTER.y,
+                    c.position.x - Constants.COIN_CENTER.x,
+                    c.position.y - Constants.COIN_CENTER.y,
                     Assets.instance.coinAssets.coin.getRegionWidth(),
                     Assets.instance.coinAssets.coin.getRegionHeight()
             );
             if (robotBounds.overlaps(coinBounds)) {
                 coins.removeIndex(i);
+                collectedCoins++;
             }
         }
         coins.end();
@@ -271,5 +277,9 @@ public class Robot {
         }
 
         Utils.drawRobotTextureRegion(batch, region, position, mirror);
+    }
+
+    public int getCollectedCoins() {
+        return collectedCoins;
     }
 }

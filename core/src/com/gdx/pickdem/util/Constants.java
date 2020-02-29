@@ -8,7 +8,9 @@ public class Constants {
     public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final float WORLD_SIZE = 140;
     public static final float COINS = 6;
-    public static final Vector2 POWERUP_CENTER = new Vector2(5, 6);
+    public static final float PORTAL_RADIUS = 12;
+    public static final float PORTAL_HEIGHT = 50;
+    public static final Vector2 COIN_CENTER = new Vector2(5, 6);
     public static final String TEXTURE_ATLAS = "images/pickdem.pack.atlas";
     public static final String STANDING_RIGHT = "Idle";
     public static final String JUMPING_RIGHT = "Jump(1)";
@@ -18,6 +20,7 @@ public class Constants {
     public static final float JUMP_LOOP_DURATION = .05f;
     public static final float STAND_LOOP_DURTATION = 0.1f;
     public static final float OWL_LOOP_DURATION = 0.2f;
+    public static final float PORTAL_LOOP_DURATION = 0.2f;
 
     public static final Vector2 ROBOT_EYE_POSITION = new Vector2(1, 16);
     public static final float ROBOT_EYE_HEIGHT = 16.0f;

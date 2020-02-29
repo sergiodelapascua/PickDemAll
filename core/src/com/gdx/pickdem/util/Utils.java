@@ -7,27 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class Utils {
-
-    public static void drawWallTextureRegion(SpriteBatch batch, TextureRegion region,float x, float y) {
-        batch.draw(
-                region.getTexture(),
-                x,
-                y,
-                0,
-                0,
-                region.getRegionWidth(),
-                region.getRegionHeight(),
-                1,
-                1,
-                0,
-                region.getRegionX(),
-                region.getRegionY(),
-                region.getRegionWidth(),
-                region.getRegionHeight(),
-                false,
-                false);
-    }
-    public static void drawCoinTextureRegion(SpriteBatch batch, TextureRegion region,float x, float y) {
+    public static void drawTextureRegion(SpriteBatch batch, TextureRegion region,float x, float y) {
         batch.draw(
                 region.getTexture(),
                 x,
@@ -47,7 +27,7 @@ public class Utils {
                 false);
     }
 
-    public static void drawRobotTextureRegion(SpriteBatch batch, TextureRegion region,Vector2 position, boolean mirror) {
+    public static void drawRobotTextureRegion(SpriteBatch batch, TextureRegion region, Vector2 position, boolean mirror) {
         batch.draw(
                 region.getTexture(),
                 position.x,
@@ -58,6 +38,26 @@ public class Utils {
                 region.getRegionHeight(),
                 0.05f,
                 0.05f,
+                0,
+                region.getRegionX(),
+                region.getRegionY(),
+                region.getRegionWidth(),
+                region.getRegionHeight(),
+                mirror,
+                false);
+    }
+
+    public static void drawMirrorTextureRegion(SpriteBatch batch, TextureRegion region, Vector2 position, boolean mirror) {
+        batch.draw(
+                region.getTexture(),
+                position.x,
+                position.y,
+                0,
+                0,
+                region.getRegionWidth(),
+                region.getRegionHeight(),
+                1,
+                1,
                 0,
                 region.getRegionX(),
                 region.getRegionY(),

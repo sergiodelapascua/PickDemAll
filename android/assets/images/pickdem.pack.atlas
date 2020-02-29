@@ -4,163 +4,177 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Jump(10)
+Idle(10)
   rotate: false
-  xy: 341, 25
-  size: 328, 496
-  orig: 328, 496
+  xy: 747, 551
+  size: 273, 467
+  orig: 273, 467
   offset: 0, 0
   index: -1
-Jump(4)
+Jump(5)
   rotate: false
-  xy: 671, 575
-  size: 342, 447
-  orig: 342, 447
+  xy: 2, 86
+  size: 352, 431
+  orig: 352, 431
+  offset: 0, 0
+  index: -1
+Jump(7)
+  rotate: false
+  xy: 358, 541
+  size: 387, 477
+  orig: 387, 477
   offset: 0, 0
   index: -1
 Jump(9)
   rotate: false
-  xy: 2, 523
+  xy: 2, 519
   size: 354, 499
   orig: 354, 499
   offset: 0, 0
   index: -1
-Run(2)
-  rotate: false
-  xy: 358, 527
-  size: 257, 495
-  orig: 257, 495
-  offset: 0, 0
-  index: -1
 Run(6)
   rotate: false
-  xy: 2, 24
+  xy: 358, 42
   size: 337, 497
   orig: 337, 497
   offset: 0, 0
   index: -1
+Run(8)
+  rotate: false
+  xy: 697, 59
+  size: 315, 480
+  orig: 315, 480
+  offset: 0, 0
+  index: -1
 agua
   rotate: false
-  xy: 33, 9
+  xy: 832, 44
   size: 16, 13
   orig: 16, 13
   offset: 0, 0
   index: -1
 arbol
   rotate: false
-  xy: 671, 473
+  xy: 773, 9
   size: 12, 48
   orig: 12, 48
   offset: 0, 0
   index: -1
 arbusto
   rotate: false
-  xy: 75, 12
+  xy: 850, 47
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
   index: -1
 bloque
   rotate: false
-  xy: 2, 6
+  xy: 801, 41
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
-bloque(1)
-  rotate: false
-  xy: 671, 91
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
-bloque(2)
-  rotate: false
-  xy: 833, 91
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
 buho(1)
   rotate: false
-  xy: 617, 523
+  xy: 164, 34
   size: 78, 50
   orig: 78, 50
   offset: 0, 0
   index: -1
 buho(2)
   rotate: false
-  xy: 753, 7
+  xy: 84, 2
   size: 78, 82
   orig: 78, 82
   offset: 0, 0
   index: -1
 buho(3)
   rotate: false
-  xy: 671, 7
+  xy: 2, 2
   size: 80, 82
   orig: 80, 82
   offset: 0, 0
   index: -1
 enredadera
   rotate: false
-  xy: 671, 424
+  xy: 787, 10
   size: 12, 47
   orig: 12, 47
   offset: 0, 0
   index: -1
 flor
   rotate: false
-  xy: 20, 8
+  xy: 819, 43
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
 moneda
   rotate: false
-  xy: 51, 10
+  xy: 346, 72
   size: 10, 12
   orig: 10, 12
   offset: 0, 0
   index: -1
 muro
   rotate: false
-  xy: 617, 974
+  xy: 296, 36
   size: 48, 48
   orig: 48, 48
-  offset: 0, 0
-  index: -1
-nube(1)
-  rotate: false
-  xy: 697, 253
-  size: 320, 320
-  orig: 320, 320
   offset: 0, 0
   index: -1
 plat
   rotate: false
-  xy: 617, 924
+  xy: 723, 9
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
+portal(1)
+  rotate: false
+  xy: 244, 34
+  size: 24, 50
+  orig: 24, 50
+  offset: 0, 0
+  index: -1
+portal(2)
+  rotate: false
+  xy: 270, 34
+  size: 24, 50
+  orig: 24, 50
+  offset: 0, 0
+  index: -1
+portal(4)
+  rotate: false
+  xy: 270, 34
+  size: 24, 50
+  orig: 24, 50
+  offset: 0, 0
+  index: -1
+portal(3)
+  rotate: false
+  xy: 697, 7
+  size: 24, 50
+  orig: 24, 50
+  offset: 0, 0
+  index: -1
 roca(1)
   rotate: false
-  xy: 33, 2
+  xy: 346, 52
   size: 10, 5
   orig: 10, 5
   offset: 0, 0
   index: -1
 roca(2)
   rotate: false
-  xy: 63, 2
+  xy: 747, 542
   size: 12, 7
   orig: 12, 7
   offset: 0, 0
   index: -1
 tronco
   rotate: false
-  xy: 63, 11
+  xy: 346, 59
   size: 10, 11
   orig: 10, 11
   offset: 0, 0
@@ -171,53 +185,46 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Jump(2)
+Idle
   rotate: false
-  xy: 2, 2
-  size: 328, 482
-  orig: 328, 482
+  xy: 715, 2
+  size: 276, 469
+  orig: 276, 469
   offset: 0, 0
   index: -1
-Run(1)
+Jump(10)
   rotate: false
-  xy: 2, 486
-  size: 258, 487
-  orig: 258, 487
+  xy: 389, 473
+  size: 328, 496
+  orig: 328, 496
+  offset: 0, 0
+  index: -1
+Jump(3)
+  rotate: false
+  xy: 372, 21
+  size: 341, 450
+  orig: 341, 450
+  offset: 0, 0
+  index: -1
+Jump(8)
+  rotate: false
+  xy: 2, 497
+  size: 385, 472
+  orig: 385, 472
   offset: 0, 0
   index: -1
 Run(5)
   rotate: false
-  xy: 262, 491
+  xy: 719, 487
   size: 299, 482
   orig: 299, 482
   offset: 0, 0
   index: -1
-Run(8)
+Run(7)
   rotate: false
-  xy: 563, 493
-  size: 315, 480
-  orig: 315, 480
-  offset: 0, 0
-  index: -1
-escaleras
-  rotate: false
-  xy: 814, 11
-  size: 160, 480
-  orig: 160, 480
-  offset: 0, 0
-  index: -1
-muro(2)
-  rotate: false
-  xy: 332, 9
-  size: 480, 480
-  orig: 480, 480
-  offset: 0, 0
-  index: -1
-nube(3)
-  rotate: false
-  xy: 880, 833
-  size: 140, 140
-  orig: 140, 140
+  xy: 2, 23
+  size: 368, 472
+  orig: 368, 472
   offset: 0, 0
   index: -1
 
@@ -226,53 +233,46 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Jump(7)
+Jump(1)
   rotate: false
-  xy: 2, 2
-  size: 387, 477
-  orig: 387, 477
+  xy: 663, 499
+  size: 290, 466
+  orig: 290, 466
   offset: 0, 0
   index: -1
-Jump(8)
+Jump(2)
   rotate: false
-  xy: 391, 7
-  size: 385, 472
-  orig: 385, 472
+  xy: 2, 483
+  size: 328, 482
+  orig: 328, 482
   offset: 0, 0
   index: -1
-Run(7)
+Jump(4)
   rotate: false
-  xy: 484, 489
-  size: 368, 472
-  orig: 368, 472
+  xy: 384, 50
+  size: 342, 447
+  orig: 342, 447
   offset: 0, 0
   index: -1
-muro(1)
+Jump(6)
   rotate: false
-  xy: 778, 7
-  size: 160, 480
-  orig: 160, 480
+  xy: 2, 67
+  size: 380, 414
+  orig: 380, 414
   offset: 0, 0
   index: -1
-muro(3)
+Run(2)
   rotate: false
-  xy: 854, 801
-  size: 160, 160
-  orig: 160, 160
+  xy: 728, 2
+  size: 257, 495
+  orig: 257, 495
   offset: 0, 0
   index: -1
-muro(4)
+Run(3)
   rotate: false
-  xy: 854, 639
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
-plataforma(1)
-  rotate: false
-  xy: 2, 481
-  size: 480, 480
-  orig: 480, 480
+  xy: 332, 499
+  size: 329, 466
+  orig: 329, 466
   offset: 0, 0
   index: -1
 
@@ -281,67 +281,46 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Jump(1)
+Idle(2)
   rotate: false
-  xy: 715, 488
-  size: 290, 466
-  orig: 290, 466
+  xy: 2, 2
+  size: 273, 466
+  orig: 273, 466
   offset: 0, 0
   index: -1
-Jump(3)
+Idle(3)
   rotate: false
-  xy: 476, 36
-  size: 341, 450
-  orig: 341, 450
+  xy: 314, 479
+  size: 273, 465
+  orig: 273, 465
   offset: 0, 0
   index: -1
-Jump(6)
+Idle(7)
   rotate: false
-  xy: 333, 540
-  size: 380, 414
-  orig: 380, 414
+  xy: 589, 480
+  size: 273, 464
+  orig: 273, 464
   offset: 0, 0
   index: -1
-Run(3)
+Idle(8)
   rotate: false
-  xy: 2, 488
-  size: 329, 466
-  orig: 329, 466
+  xy: 552, 12
+  size: 273, 465
+  orig: 273, 465
+  offset: 0, 0
+  index: -1
+Idle(9)
+  rotate: false
+  xy: 277, 2
+  size: 273, 466
+  orig: 273, 466
   offset: 0, 0
   index: -1
 Run(4)
   rotate: false
-  xy: 2, 12
+  xy: 2, 470
   size: 310, 474
   orig: 310, 474
-  offset: 0, 0
-  index: -1
-muro(5)
-  rotate: false
-  xy: 819, 326
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
-nube(2)
-  rotate: false
-  xy: 314, 6
-  size: 160, 480
-  orig: 160, 480
-  offset: 0, 0
-  index: -1
-plataforma(3)
-  rotate: false
-  xy: 819, 164
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
-puerta
-  rotate: false
-  xy: 819, 2
-  size: 160, 160
-  orig: 160, 160
   offset: 0, 0
   index: -1
 
@@ -350,106 +329,31 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Idle
-  rotate: false
-  xy: 2, 34
-  size: 276, 469
-  orig: 276, 469
-  offset: 0, 0
-  index: -1
-Idle(10)
-  rotate: false
-  xy: 356, 469
-  size: 273, 467
-  orig: 273, 467
-  offset: 0, 0
-  index: -1
-Idle(2)
-  rotate: false
-  xy: 631, 470
-  size: 273, 466
-  orig: 273, 466
-  offset: 0, 0
-  index: -1
-Idle(3)
-  rotate: false
-  xy: 280, 2
-  size: 273, 465
-  orig: 273, 465
-  offset: 0, 0
-  index: -1
-Idle(8)
-  rotate: false
-  xy: 555, 2
-  size: 273, 465
-  orig: 273, 465
-  offset: 0, 0
-  index: -1
-Jump(5)
-  rotate: false
-  xy: 2, 505
-  size: 352, 431
-  orig: 352, 431
-  offset: 0, 0
-  index: -1
-
-pickdem.pack6.png
-size: 1024,1024
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
 Idle(4)
   rotate: false
-  xy: 277, 471
+  xy: 262, 491
   size: 273, 463
   orig: 273, 463
   offset: 0, 0
   index: -1
 Idle(5)
   rotate: false
-  xy: 277, 6
+  xy: 537, 491
   size: 273, 463
   orig: 273, 463
   offset: 0, 0
   index: -1
 Idle(6)
   rotate: false
-  xy: 552, 471
+  xy: 2, 2
   size: 273, 463
   orig: 273, 463
   offset: 0, 0
   index: -1
-Idle(7)
+Run(1)
   rotate: false
-  xy: 2, 2
-  size: 273, 464
-  orig: 273, 464
-  offset: 0, 0
-  index: -1
-Idle(9)
-  rotate: false
-  xy: 2, 468
-  size: 273, 466
-  orig: 273, 466
-  offset: 0, 0
-  index: -1
-
-pickdem.pack7.png
-size: 1024,256
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-muro(6)
-  rotate: false
-  xy: 2, 2
-  size: 480, 160
-  orig: 480, 160
-  offset: 0, 0
-  index: -1
-plataforma(2)
-  rotate: false
-  xy: 484, 2
-  size: 480, 160
-  orig: 480, 160
+  xy: 2, 467
+  size: 258, 487
+  orig: 258, 487
   offset: 0, 0
   index: -1

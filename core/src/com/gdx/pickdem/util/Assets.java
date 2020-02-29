@@ -27,6 +27,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public BigRockAssets bigRock;
     public LittleRockAssets littleRockAssets;
     public BushAssets bushAssets;
+    public PortalAssets portalAssets;
 
     private AssetManager assetManager;
 
@@ -51,6 +52,7 @@ public class Assets implements Disposable, AssetErrorListener {
         bigRock = new BigRockAssets(atlas);
         littleRockAssets = new LittleRockAssets(atlas);
         bushAssets = new BushAssets(atlas);
+        portalAssets = new PortalAssets(atlas);
     }
 
     @Override
@@ -66,15 +68,11 @@ public class Assets implements Disposable, AssetErrorListener {
     //=======================================================================
     public class RobotAssets {
 
-        //public final TextureAtlas.AtlasRegion plataforma;
-
         public final Animation walkingRightAnimation;
         public final Animation jumpingRightAnimation;
         public final Animation standingRightAnimation;
 
         public RobotAssets(TextureAtlas atlas) {
-
-            //plataforma = atlas.findRegion("plataforma(2)");
 
             Array<TextureAtlas.AtlasRegion> walkingRightFrames = new Array<TextureAtlas.AtlasRegion>();
             walkingRightFrames.add(atlas.findRegion(Constants.WALKING_RIGHT));
@@ -212,6 +210,21 @@ public class Assets implements Disposable, AssetErrorListener {
 
         public BushAssets(TextureAtlas atlas) {
             arbusto = atlas.findRegion("arbusto");
+        }
+    }
+
+    public class PortalAssets {
+
+        public final Animation portalAnimation;
+
+        public PortalAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> portalFrames = new Array<TextureAtlas.AtlasRegion>();
+            portalFrames.add(atlas.findRegion("portal(1)"));
+            portalFrames.add(atlas.findRegion("portal(2)"));
+            portalFrames.add(atlas.findRegion("portal(3)"));
+            portalFrames.add(atlas.findRegion("portal(4)"));
+            portalAnimation = new Animation(Constants.PORTAL_LOOP_DURATION, portalFrames, Animation.PlayMode.LOOP);
         }
     }
 }

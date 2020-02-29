@@ -21,20 +21,18 @@ public class GameplayScreen extends ScreenAdapter {
     ExtendViewport viewport;
     ShapeRenderer renderer;
     private ChaseCam chaseCam;
+    private String loadedLevel = "";
 
     @Override
     public void show() {
         AssetManager am = new AssetManager();
         Assets.instance.init(am);
-
-        //level = new Level();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        //level = LevelLoader.load("MainScene", viewport);
-        level = LevelLoader.load("Level2", viewport);
+        startNewLevel();
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        chaseCam = new ChaseCam(viewport.getCamera(), level.getRobot());
+        chaseCam = new ChaseCam(viewport.getCamera(), level.getRobot(), level);
     }
 
     @Override
@@ -51,9 +49,7 @@ public class GameplayScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         level.update(delta);
-
         chaseCam.update();
-
         viewport.apply();
         Gdx.gl.glClearColor(
                 Constants.BACKGROUND_COLOR.r,
@@ -65,6 +61,26 @@ public class GameplayScreen extends ScreenAdapter {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         renderer.setProjectionMatrix(viewport.getCamera().combined);
         level.render(batch, renderer);
+
+        if(level.isComplete())
+            startNewLevel();
+    }
+
+    private void startNewLevel() {
+        String nextLevel = "";
+        if (loadedLevel.equals("")) {
+            nextLevel = "Level1";
+            loadedLevel = "Level1";
+        }else if(loadedLevel.equals("Level1")) {
+            nextLevel = "Level2";
+            loadedLevel = "Level2";
+        }else if(loadedLevel.equals("Level2")) {
+            System.out.println("FINAAAAL");
+        }
+        level = LevelLoader.load(nextLevel, viewport);
+
+        chaseCam = new ChaseCam(viewport.getCamera(), level.getRobot(), level);
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 }
 

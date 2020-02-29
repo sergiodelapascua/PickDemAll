@@ -14,7 +14,7 @@ public class Water {
     public void render(SpriteBatch batch) {
         final TextureRegion region = Assets.instance.waterAssets.water;
         for (int i = -0; i <= endOfMap + 16; i=i +16) {
-            Utils.drawWallTextureRegion(batch, region, i, -16);
+            Utils.drawTextureRegion(batch, region, i, -16);
         }
     }
 }
