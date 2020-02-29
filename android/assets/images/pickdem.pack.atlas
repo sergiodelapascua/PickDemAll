@@ -118,9 +118,9 @@ moneda
   index: -1
 muro
   rotate: false
-  xy: 617, 921
-  size: 48, 47
-  orig: 48, 47
+  xy: 617, 970
+  size: 48, 48
+  orig: 48, 48
   offset: 0, 0
   index: -1
 nube(1)
@@ -139,7 +139,7 @@ piedra
   index: -1
 plat
   rotate: false
-  xy: 617, 970
+  xy: 617, 920
   size: 48, 48
   orig: 48, 48
   offset: 0, 0

@@ -8,6 +8,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
 import com.gdx.pickdem.entity.Robot;
+import com.gdx.pickdem.entity.Wall;
+import com.gdx.pickdem.entity.Water;
 import com.gdx.pickdem.util.Constants;
 
 public class Level {
@@ -16,14 +18,32 @@ public class Level {
     private Owl owl;
     private Array<Platform> platforms;
     private Viewport viewport;
+    private float maxX;
+    private Wall walls;
+    private Water water;
 
     public Level(Viewport viewport) {
         this.viewport = viewport;
         platforms = new Array<Platform>();
+        maxX= Integer.MIN_VALUE;
+        walls = null;
+        water = null;
         initLevel();
     }
 
     public void update(float delta) {
+        if(walls == null){
+            for (Platform p : platforms){
+                if(p.right > maxX) {
+                    maxX = p.right;
+                }
+            }
+            walls = new Wall(maxX);
+        }
+        if(water == null){
+            water = new Water(maxX);
+        }
+
         robot.update(delta, platforms);
         //TODO: Atento a que este activo
         //owl.update(delta);
@@ -62,6 +82,8 @@ public class Level {
         renderer.end();
 
         batch.begin();
+        water.render(batch);
+        walls.render(batch);
         for (Platform platform : platforms)
             platform.render(batch);
         robot.render(batch);
@@ -80,5 +102,9 @@ public class Level {
 
     public Array<Platform> getPlatforms() {
         return platforms;
+    }
+
+    public float getMaxX() {
+        return maxX;
     }
 }

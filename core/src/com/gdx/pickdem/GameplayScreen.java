@@ -30,7 +30,7 @@ public class GameplayScreen extends ScreenAdapter {
         //level = new Level();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         //level = LevelLoader.load("MainScene", viewport);
-        level = LevelLoader.load("Level1", viewport);
+        level = LevelLoader.load("Level2", viewport);
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);

@@ -14,6 +14,9 @@ public class ChaseCam {
 
     public void update() {
         camera.position.x = target.position.x;
-        camera.position.y = target.position.y+40;
+        if(target.position.y - Constants.ROBOT_EYE_HEIGHT < 0)
+            camera.position.y = Constants.ROBOT_EYE_HEIGHT + 40;
+        else
+            camera.position.y = target.position.y+40;
     }
 }

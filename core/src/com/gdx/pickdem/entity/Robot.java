@@ -72,6 +72,7 @@ public class Robot {
                     continue;
                 else
                     platformIndex.add(index);
+                System.out.println("GENERADO "+index);
             }
 
             for (Integer i : platformIndex) {
@@ -81,6 +82,7 @@ public class Robot {
                 float y = p.top + 1;
                 coins.add(new Coin(new Vector2(x, y)));
             }
+            System.out.println("============");
         }
     }
 
@@ -95,12 +97,7 @@ public class Robot {
         if (jumpState != JumpState.JUMPING) {
             jumpState = JumpState.FALLING;
 
-            /*if (position.y - Constants.ROBOT_EYE_HEIGHT < 0) {
-                jumpState = JumpState.GROUNDED;
-                position.y = Constants.ROBOT_EYE_HEIGHT;
-                velocity.y = 0;
-            }*/
-            if (position.y - Constants.ROBOT_EYE_HEIGHT < -100)
+            if (position.y - Constants.ROBOT_EYE_HEIGHT < -16)
                 this.init();
 
 
@@ -112,6 +109,11 @@ public class Robot {
                 }
             }
         }
+
+        /*if(position.x < 0)
+            position.x = 0;
+        else if(position.x + Constants.ROBOT_STANCE_WIDTH > level.getMaxX())
+            position.x = level.getMaxX() - Constants.ROBOT_STANCE_WIDTH;*/
 
         Rectangle robotBounds = new Rectangle(
                 position.x,
@@ -231,7 +233,7 @@ public class Robot {
 
         if (facing == Facing.RIGHT && jumpState != JumpState.GROUNDED) {
 
-            float jumpDuration = MathUtils.nanoToSec * (TimeUtils.nanoTime() - jumpStartTime);
+            float jumpDuration = Utils.secondsSince(jumpStartTime);
             region = Assets.instance.robotAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
             //region = Assets.instance.pickDemAssets.jumpingRight;
             mirror = false;
@@ -244,13 +246,13 @@ public class Robot {
 
         } else if (facing == Facing.RIGHT && walkState == WalkState.WALKING) {
 
-            float walkTimeSeconds = MathUtils.nanoToSec * (TimeUtils.nanoTime() - walkStartTime);
+            float walkTimeSeconds = Utils.secondsSince(walkStartTime);
             region = Assets.instance.robotAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
             mirror = false;
 
         } else if (facing == Enums.Facing.LEFT && jumpState != JumpState.GROUNDED) {
 
-            float jumpDuration = MathUtils.nanoToSec * (TimeUtils.nanoTime() - jumpStartTime);
+            float jumpDuration = Utils.secondsSince(jumpStartTime);
             region = Assets.instance.robotAssets.jumpingRightAnimation.getKeyFrame(jumpDuration);
             //region = Assets.instance.pickDemAssets.jumpingRight;
             mirror = true;
@@ -263,7 +265,7 @@ public class Robot {
 
         } else if (facing == Facing.LEFT && walkState == WalkState.WALKING) {
 
-            float walkTimeSeconds = MathUtils.nanoToSec * (TimeUtils.nanoTime() - walkStartTime);
+            float walkTimeSeconds = Utils.secondsSince(walkStartTime);
             region = Assets.instance.robotAssets.walkingRightAnimation.getKeyFrame(walkTimeSeconds);
             mirror = true;
 

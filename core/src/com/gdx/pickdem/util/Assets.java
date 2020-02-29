@@ -20,6 +20,8 @@ public class Assets implements Disposable, AssetErrorListener {
     public PlatformAssets platformAssets;
     public OwlAssets owlAssets;
     public CoinAssets coinAssets;
+    public WallAssets wallAssets;
+    public WaterAssets waterAssets;
 
     private AssetManager assetManager;
 
@@ -37,6 +39,8 @@ public class Assets implements Disposable, AssetErrorListener {
         platformAssets = new PlatformAssets(atlas);
         owlAssets = new OwlAssets(atlas);
         coinAssets = new CoinAssets(atlas);
+        wallAssets = new WallAssets(atlas);
+        waterAssets = new WaterAssets(atlas);
     }
 
     @Override
@@ -135,6 +139,23 @@ public class Assets implements Disposable, AssetErrorListener {
 
         public CoinAssets(TextureAtlas atlas) {
             coin = atlas.findRegion("moneda");
+        }
+    }
+
+    public class WallAssets {
+
+        public final TextureAtlas.AtlasRegion wall;
+
+        public WallAssets(TextureAtlas atlas) {
+            wall = atlas.findRegion("muro");
+        }
+    }
+    public class WaterAssets {
+
+        public final TextureAtlas.AtlasRegion water;
+
+        public WaterAssets(TextureAtlas atlas) {
+            water = atlas.findRegion("agua");
         }
     }
 }

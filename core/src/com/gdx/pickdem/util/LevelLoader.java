@@ -102,6 +102,8 @@ public class LevelLoader {
 
         // TODO: Add all the platforms from platformArray to the level
         level.getPlatforms().addAll(platformArray);
+
+        System.out.printf("NUMERO DE PLAT " + platformArray.size);
     }
 
 }

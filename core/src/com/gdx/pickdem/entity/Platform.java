@@ -5,11 +5,9 @@ import com.gdx.pickdem.util.Assets;
 
 public class Platform {
     public float top;
-    float bottom;
-    float left;
-    float right;
-    int height;
-    int width;
+    public float bottom;
+    public float left;
+    public float right;
     private String plataformName;
 
 
