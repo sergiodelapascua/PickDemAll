@@ -1,4 +1,4 @@
-package com.gdx.pickdem.entity;
+package com.gdx.pickdem.environment;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

@@ -60,6 +60,7 @@ public class Robot {
         walkState = WalkState.STANDING;
 
         generateCoins();
+        level.generateEnvironment();
     }
 
     private void generateCoins() {
@@ -72,7 +73,6 @@ public class Robot {
                     continue;
                 else
                     platformIndex.add(index);
-                System.out.println("GENERADO "+index);
             }
 
             for (Integer i : platformIndex) {
@@ -82,7 +82,6 @@ public class Robot {
                 float y = p.top + 1;
                 coins.add(new Coin(new Vector2(x, y)));
             }
-            System.out.println("============");
         }
     }
 

@@ -6,142 +6,163 @@ filter: Nearest,Nearest
 repeat: none
 Jump(10)
   rotate: false
-  xy: 341, 21
+  xy: 341, 25
   size: 328, 496
   orig: 328, 496
   offset: 0, 0
   index: -1
 Jump(4)
   rotate: false
-  xy: 671, 571
+  xy: 671, 575
   size: 342, 447
   orig: 342, 447
   offset: 0, 0
   index: -1
 Jump(9)
   rotate: false
-  xy: 2, 519
+  xy: 2, 523
   size: 354, 499
   orig: 354, 499
   offset: 0, 0
   index: -1
 Run(2)
   rotate: false
-  xy: 358, 523
+  xy: 358, 527
   size: 257, 495
   orig: 257, 495
   offset: 0, 0
   index: -1
 Run(6)
   rotate: false
-  xy: 2, 20
+  xy: 2, 24
   size: 337, 497
   orig: 337, 497
   offset: 0, 0
   index: -1
 agua
   rotate: false
-  xy: 33, 5
+  xy: 33, 9
   size: 16, 13
   orig: 16, 13
   offset: 0, 0
   index: -1
 arbol
   rotate: false
-  xy: 671, 469
+  xy: 671, 473
   size: 12, 48
   orig: 12, 48
   offset: 0, 0
   index: -1
 arbusto
   rotate: false
-  xy: 63, 8
+  xy: 75, 12
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
   index: -1
 bloque
   rotate: false
-  xy: 2, 2
+  xy: 2, 6
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 bloque(1)
   rotate: false
-  xy: 671, 87
+  xy: 671, 91
   size: 160, 160
   orig: 160, 160
   offset: 0, 0
   index: -1
 bloque(2)
   rotate: false
-  xy: 833, 87
+  xy: 833, 91
   size: 160, 160
   orig: 160, 160
   offset: 0, 0
   index: -1
 buho(1)
   rotate: false
-  xy: 617, 519
+  xy: 617, 523
   size: 78, 50
   orig: 78, 50
   offset: 0, 0
   index: -1
 buho(2)
   rotate: false
-  xy: 753, 3
+  xy: 753, 7
   size: 78, 82
   orig: 78, 82
   offset: 0, 0
   index: -1
 buho(3)
   rotate: false
-  xy: 671, 3
+  xy: 671, 7
   size: 80, 82
   orig: 80, 82
   offset: 0, 0
   index: -1
+enredadera
+  rotate: false
+  xy: 671, 424
+  size: 12, 47
+  orig: 12, 47
+  offset: 0, 0
+  index: -1
 flor
   rotate: false
-  xy: 20, 4
+  xy: 20, 8
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
 moneda
   rotate: false
-  xy: 51, 6
+  xy: 51, 10
   size: 10, 12
   orig: 10, 12
   offset: 0, 0
   index: -1
 muro
   rotate: false
-  xy: 617, 970
+  xy: 617, 974
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 nube(1)
   rotate: false
-  xy: 697, 249
+  xy: 697, 253
   size: 320, 320
   orig: 320, 320
   offset: 0, 0
   index: -1
-piedra
-  rotate: false
-  xy: 833, 15
-  size: 120, 70
-  orig: 120, 70
-  offset: 0, 0
-  index: -1
 plat
   rotate: false
-  xy: 617, 920
+  xy: 617, 924
   size: 48, 48
   orig: 48, 48
+  offset: 0, 0
+  index: -1
+roca(1)
+  rotate: false
+  xy: 33, 2
+  size: 10, 5
+  orig: 10, 5
+  offset: 0, 0
+  index: -1
+roca(2)
+  rotate: false
+  xy: 63, 2
+  size: 12, 7
+  orig: 12, 7
+  offset: 0, 0
+  index: -1
+tronco
+  rotate: false
+  xy: 63, 11
+  size: 10, 11
+  orig: 10, 11
   offset: 0, 0
   index: -1
 
@@ -152,72 +173,51 @@ filter: Nearest,Nearest
 repeat: none
 Jump(2)
   rotate: false
-  xy: 2, 19
+  xy: 2, 2
   size: 328, 482
   orig: 328, 482
   offset: 0, 0
   index: -1
 Run(1)
   rotate: false
-  xy: 2, 503
+  xy: 2, 486
   size: 258, 487
   orig: 258, 487
   offset: 0, 0
   index: -1
 Run(5)
   rotate: false
-  xy: 262, 508
+  xy: 262, 491
   size: 299, 482
   orig: 299, 482
   offset: 0, 0
   index: -1
 Run(8)
   rotate: false
-  xy: 563, 510
+  xy: 563, 493
   size: 315, 480
   orig: 315, 480
   offset: 0, 0
   index: -1
-enredadera
+escaleras
   rotate: false
-  xy: 880, 276
-  size: 120, 470
-  orig: 120, 470
+  xy: 814, 11
+  size: 160, 480
+  orig: 160, 480
   offset: 0, 0
   index: -1
 muro(2)
   rotate: false
-  xy: 332, 26
+  xy: 332, 9
   size: 480, 480
   orig: 480, 480
   offset: 0, 0
   index: -1
-muro(3)
-  rotate: false
-  xy: 814, 114
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
 nube(3)
   rotate: false
-  xy: 880, 850
+  xy: 880, 833
   size: 140, 140
   orig: 140, 140
-  offset: 0, 0
-  index: -1
-seto
-  rotate: false
-  xy: 880, 748
-  size: 140, 100
-  orig: 140, 100
-  offset: 0, 0
-  index: -1
-tronco
-  rotate: false
-  xy: 814, 2
-  size: 100, 110
-  orig: 100, 110
   offset: 0, 0
   index: -1
 
@@ -247,21 +247,21 @@ Run(7)
   orig: 368, 472
   offset: 0, 0
   index: -1
-escaleras
+muro(1)
   rotate: false
   xy: 778, 7
   size: 160, 480
   orig: 160, 480
   offset: 0, 0
   index: -1
-muro(4)
+muro(3)
   rotate: false
   xy: 854, 801
   size: 160, 160
   orig: 160, 160
   offset: 0, 0
   index: -1
-muro(5)
+muro(4)
   rotate: false
   xy: 854, 639
   size: 160, 160
@@ -283,51 +283,65 @@ filter: Nearest,Nearest
 repeat: none
 Jump(1)
   rotate: false
-  xy: 715, 484
+  xy: 715, 488
   size: 290, 466
   orig: 290, 466
   offset: 0, 0
   index: -1
-Jump(5)
+Jump(3)
   rotate: false
-  xy: 638, 51
-  size: 352, 431
-  orig: 352, 431
+  xy: 476, 36
+  size: 341, 450
+  orig: 341, 450
   offset: 0, 0
   index: -1
 Jump(6)
   rotate: false
-  xy: 333, 536
+  xy: 333, 540
   size: 380, 414
   orig: 380, 414
   offset: 0, 0
   index: -1
 Run(3)
   rotate: false
-  xy: 2, 484
+  xy: 2, 488
   size: 329, 466
   orig: 329, 466
   offset: 0, 0
   index: -1
 Run(4)
   rotate: false
-  xy: 2, 8
+  xy: 2, 12
   size: 310, 474
   orig: 310, 474
   offset: 0, 0
   index: -1
-muro(1)
+muro(5)
   rotate: false
-  xy: 314, 2
-  size: 160, 480
-  orig: 160, 480
+  xy: 819, 326
+  size: 160, 160
+  orig: 160, 160
   offset: 0, 0
   index: -1
 nube(2)
   rotate: false
-  xy: 476, 54
+  xy: 314, 6
   size: 160, 480
   orig: 160, 480
+  offset: 0, 0
+  index: -1
+plataforma(3)
+  rotate: false
+  xy: 819, 164
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+puerta
+  rotate: false
+  xy: 819, 2
+  size: 160, 160
+  orig: 160, 160
   offset: 0, 0
   index: -1
 
@@ -338,21 +352,21 @@ filter: Nearest,Nearest
 repeat: none
 Idle
   rotate: false
-  xy: 2, 15
+  xy: 2, 34
   size: 276, 469
   orig: 276, 469
   offset: 0, 0
   index: -1
 Idle(10)
   rotate: false
-  xy: 345, 469
+  xy: 356, 469
   size: 273, 467
   orig: 273, 467
   offset: 0, 0
   index: -1
 Idle(2)
   rotate: false
-  xy: 620, 470
+  xy: 631, 470
   size: 273, 466
   orig: 273, 466
   offset: 0, 0
@@ -371,25 +385,11 @@ Idle(8)
   orig: 273, 465
   offset: 0, 0
   index: -1
-Jump(3)
+Jump(5)
   rotate: false
-  xy: 2, 486
-  size: 341, 450
-  orig: 341, 450
-  offset: 0, 0
-  index: -1
-plataforma(3)
-  rotate: false
-  xy: 830, 308
-  size: 160, 160
-  orig: 160, 160
-  offset: 0, 0
-  index: -1
-puerta
-  rotate: false
-  xy: 830, 146
-  size: 160, 160
-  orig: 160, 160
+  xy: 2, 505
+  size: 352, 431
+  orig: 352, 431
   offset: 0, 0
   index: -1
 

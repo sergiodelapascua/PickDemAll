@@ -22,6 +22,11 @@ public class Assets implements Disposable, AssetErrorListener {
     public CoinAssets coinAssets;
     public WallAssets wallAssets;
     public WaterAssets waterAssets;
+    public FlowerAssets flowerAssets;
+    public TreeAssets treeAssets;
+    public BigRockAssets bigRock;
+    public LittleRockAssets littleRockAssets;
+    public BushAssets bushAssets;
 
     private AssetManager assetManager;
 
@@ -41,6 +46,11 @@ public class Assets implements Disposable, AssetErrorListener {
         coinAssets = new CoinAssets(atlas);
         wallAssets = new WallAssets(atlas);
         waterAssets = new WaterAssets(atlas);
+        flowerAssets = new FlowerAssets(atlas);
+        treeAssets = new TreeAssets(atlas);
+        bigRock = new BigRockAssets(atlas);
+        littleRockAssets = new LittleRockAssets(atlas);
+        bushAssets = new BushAssets(atlas);
     }
 
     @Override
@@ -150,12 +160,58 @@ public class Assets implements Disposable, AssetErrorListener {
             wall = atlas.findRegion("muro");
         }
     }
+
     public class WaterAssets {
 
         public final TextureAtlas.AtlasRegion water;
 
         public WaterAssets(TextureAtlas atlas) {
             water = atlas.findRegion("agua");
+        }
+    }
+
+    public class FlowerAssets {
+
+        public final TextureAtlas.AtlasRegion flower;
+
+        public FlowerAssets(TextureAtlas atlas) {
+            flower = atlas.findRegion("flor");
+        }
+    }
+
+    public class TreeAssets {
+
+        public final TextureAtlas.AtlasRegion tree;
+
+        public TreeAssets(TextureAtlas atlas) {
+            tree = atlas.findRegion("arbol");
+        }
+    }
+
+    public class LittleRockAssets {
+
+        public final TextureAtlas.AtlasRegion rock;
+
+        public LittleRockAssets(TextureAtlas atlas) {
+            rock = atlas.findRegion("roca(1)");
+        }
+    }
+
+    public class BigRockAssets {
+
+        public final TextureAtlas.AtlasRegion rock;
+
+        public BigRockAssets(TextureAtlas atlas) {
+            rock = atlas.findRegion("roca(2)");
+        }
+    }
+
+    public class BushAssets {
+
+        public final TextureAtlas.AtlasRegion arbusto;
+
+        public BushAssets(TextureAtlas atlas) {
+            arbusto = atlas.findRegion("arbusto");
         }
     }
 }

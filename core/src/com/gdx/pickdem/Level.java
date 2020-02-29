@@ -8,9 +8,18 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.gdx.pickdem.entity.Owl;
 import com.gdx.pickdem.entity.Platform;
 import com.gdx.pickdem.entity.Robot;
-import com.gdx.pickdem.entity.Wall;
-import com.gdx.pickdem.entity.Water;
+import com.gdx.pickdem.environment.BigRock;
+import com.gdx.pickdem.environment.Bush;
+import com.gdx.pickdem.environment.Environment;
+import com.gdx.pickdem.environment.Flower;
+import com.gdx.pickdem.environment.LittleRock;
+import com.gdx.pickdem.environment.Tree;
+import com.gdx.pickdem.environment.Wall;
+import com.gdx.pickdem.environment.Water;
 import com.gdx.pickdem.util.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Level {
 
@@ -21,10 +30,12 @@ public class Level {
     private float maxX;
     private Wall walls;
     private Water water;
+    private List<Environment> environments;
 
     public Level(Viewport viewport) {
         this.viewport = viewport;
         platforms = new Array<Platform>();
+        environments = null;
         maxX= Integer.MIN_VALUE;
         walls = null;
         water = null;
@@ -40,9 +51,12 @@ public class Level {
             }
             walls = new Wall(maxX);
         }
-        if(water == null){
+
+        if(water == null)
             water = new Water(maxX);
-        }
+
+        if (environments == null)
+            generateEnvironment();
 
         robot.update(delta, platforms);
         //TODO: Atento a que este activo
@@ -86,6 +100,8 @@ public class Level {
         walls.render(batch);
         for (Platform platform : platforms)
             platform.render(batch);
+        for(Environment e : environments)
+            e.render(batch);
         robot.render(batch);
         owl.render(batch);
         batch.end();
@@ -106,5 +122,45 @@ public class Level {
 
     public float getMaxX() {
         return maxX;
+    }
+
+    public void generateEnvironment(){
+        if(platforms.size > 0) {
+            environments = new ArrayList<Environment>();
+            List<Integer> platformIndex = new ArrayList<Integer>();
+            int quantity = (int) (platforms.size * 0.66);
+            while (platformIndex.size() < 60) {
+                int index = (int) (Math.random() * platforms.size - 1) + 1;
+                /*if (platformIndex.contains(index))
+                    continue;
+                else*/
+                    platformIndex.add(index);
+            }
+
+            for (Integer i : platformIndex) {
+                Platform p = platforms.get(i);
+                float x = (float) ((Math.random() * ((p.right - 10) - p.left)) + p.left);
+                //float x = (p.right - p.left)/2 + p.left;
+                float y = p.top + 1;
+                int random = (int) (Math.random()*5);
+                switch (random){
+                    case 0:
+                        environments.add(new Tree(new Vector2(x, y)));
+                        break;
+                    case 1:
+                        environments.add(new Flower(new Vector2(x, y)));
+                        break;
+                    case 2:
+                        environments.add(new BigRock(new Vector2(x, y)));
+                        break;
+                    case 3:
+                        environments.add(new LittleRock(new Vector2(x, y)));
+                        break;
+                    case 4:
+                        environments.add(new Bush(new Vector2(x, y)));
+                        break;
+                }
+            }
+        }
     }
 }
