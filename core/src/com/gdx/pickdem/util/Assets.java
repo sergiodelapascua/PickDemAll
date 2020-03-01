@@ -28,14 +28,23 @@ public class Assets implements Disposable, AssetErrorListener {
     public LittleRockAssets littleRockAssets;
     public BushAssets bushAssets;
     public PortalAssets portalAssets;
+    public ExplosionAssets explosionAssets;
+    public RedFireworkAssets redFireworkAssets;
+    public BlueFireworkAssets blueFireworkAssets;
+    public VioletFireworkAssets violetFireworkAssets;
+    public YellowFireworkAssets yellowFireworkAssets;
 
     private AssetManager assetManager;
+    private AssetManager assetManager1;
+    private AssetManager assetManager2;
+    private AssetManager assetManager3;
+    private AssetManager assetManager4;
 
     private Assets() {
     }
 
-    public void init(AssetManager assetManager) {
-        this.assetManager = assetManager;
+    public void init(AssetManager am, AssetManager am1, AssetManager am2, AssetManager am3, AssetManager am4) {
+        this.assetManager = am;
         assetManager.setErrorListener(this);
         assetManager.load(Constants.TEXTURE_ATLAS, TextureAtlas.class);
         assetManager.finishLoading();
@@ -53,6 +62,35 @@ public class Assets implements Disposable, AssetErrorListener {
         littleRockAssets = new LittleRockAssets(atlas);
         bushAssets = new BushAssets(atlas);
         portalAssets = new PortalAssets(atlas);
+        explosionAssets = new ExplosionAssets(atlas);
+
+        this.assetManager1 = am1;
+        assetManager1.setErrorListener(this);
+        assetManager1.load("images/redshot.atlas", TextureAtlas.class);
+        assetManager1.finishLoading();
+        TextureAtlas atlasRedFirework = assetManager1.get("images/redshot.atlas");
+        redFireworkAssets = new RedFireworkAssets(atlasRedFirework);
+
+        this.assetManager2 = am2;
+        assetManager2.setErrorListener(this);
+        assetManager2.load("images/blueshot.atlas", TextureAtlas.class);
+        assetManager2.finishLoading();
+        TextureAtlas atlasBlueFirework = assetManager2.get("images/blueshot.atlas");
+        blueFireworkAssets = new BlueFireworkAssets(atlasBlueFirework);
+
+        this.assetManager3 = am3;
+        assetManager3.setErrorListener(this);
+        assetManager3.load("images/violetshot.atlas", TextureAtlas.class);
+        assetManager3.finishLoading();
+        TextureAtlas atlasVioletFirework = assetManager3.get("images/violetshot.atlas");
+        violetFireworkAssets = new VioletFireworkAssets(atlasVioletFirework);
+
+        this.assetManager4 = am3;
+        assetManager4.setErrorListener(this);
+        assetManager4.load("images/yellowshot.atlas", TextureAtlas.class);
+        assetManager4.finishLoading();
+        TextureAtlas atlasYellowFirework = assetManager4.get("images/yellowshot.atlas");
+        yellowFireworkAssets = new YellowFireworkAssets(atlasYellowFirework);
     }
 
     @Override
@@ -63,6 +101,10 @@ public class Assets implements Disposable, AssetErrorListener {
     @Override
     public void dispose() {
         assetManager.dispose();
+        assetManager1.dispose();
+        assetManager2.dispose();
+        assetManager3.dispose();
+        assetManager4.dispose();
     }
 
     //=======================================================================
@@ -181,9 +223,8 @@ public class Assets implements Disposable, AssetErrorListener {
 
         public final TextureAtlas.AtlasRegion tree;
 
-        public TreeAssets(TextureAtlas atlas) {
-            tree = atlas.findRegion("arbol");
-        }
+        //public TreeAssets(TextureAtlas atlas) { tree = atlas.findRegion("arbol"); }
+        public TreeAssets(TextureAtlas atlas) { tree = atlas.findRegion("tronco"); }
     }
 
     public class LittleRockAssets {
@@ -225,6 +266,101 @@ public class Assets implements Disposable, AssetErrorListener {
             portalFrames.add(atlas.findRegion("portal(3)"));
             portalFrames.add(atlas.findRegion("portal(4)"));
             portalAnimation = new Animation(Constants.PORTAL_LOOP_DURATION, portalFrames, Animation.PlayMode.LOOP);
+        }
+    }
+
+    public class ExplosionAssets {
+
+        public final Animation explosion;
+
+        public ExplosionAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> explosionRegions = new Array<TextureAtlas.AtlasRegion>();
+            explosionRegions.add(atlas.findRegion("explosion-small"));
+            explosionRegions.add(atlas.findRegion("explosion-medium"));
+            explosionRegions.add(atlas.findRegion("explosion-large"));
+
+            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+        }
+    }
+
+    public class RedFireworkAssets {
+
+        public final Animation explosion;
+
+        public RedFireworkAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> explosionRegions = new Array<TextureAtlas.AtlasRegion>();
+            explosionRegions.add(atlas.findRegion("firework_red0"));
+            explosionRegions.add(atlas.findRegion("firework_red1"));
+            explosionRegions.add(atlas.findRegion("firework_red2"));
+            explosionRegions.add(atlas.findRegion("firework_red3"));
+            explosionRegions.add(atlas.findRegion("firework_red4"));
+            explosionRegions.add(atlas.findRegion("firework_red5"));
+            explosionRegions.add(atlas.findRegion("firework_red6"));
+            explosionRegions.add(atlas.findRegion("firework_red7"));
+
+            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+        }
+    }
+
+    public class BlueFireworkAssets {
+
+        public final Animation explosion;
+
+        public BlueFireworkAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> explosionRegions = new Array<TextureAtlas.AtlasRegion>();
+            explosionRegions.add(atlas.findRegion("firework_blue0"));
+            explosionRegions.add(atlas.findRegion("firework_blue1"));
+            explosionRegions.add(atlas.findRegion("firework_blue2"));
+            explosionRegions.add(atlas.findRegion("firework_blue3"));
+            explosionRegions.add(atlas.findRegion("firework_blue4"));
+            explosionRegions.add(atlas.findRegion("firework_blue5"));
+            explosionRegions.add(atlas.findRegion("firework_blue6"));
+            explosionRegions.add(atlas.findRegion("firework_blue7"));
+
+            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+        }
+    }
+
+    public class VioletFireworkAssets {
+
+        public final Animation explosion;
+
+        public VioletFireworkAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> explosionRegions = new Array<TextureAtlas.AtlasRegion>();
+            explosionRegions.add(atlas.findRegion("firework_violet0"));
+            explosionRegions.add(atlas.findRegion("firework_violet1"));
+            explosionRegions.add(atlas.findRegion("firework_violet2"));
+            explosionRegions.add(atlas.findRegion("firework_violet3"));
+            explosionRegions.add(atlas.findRegion("firework_violet4"));
+            explosionRegions.add(atlas.findRegion("firework_violet5"));
+            explosionRegions.add(atlas.findRegion("firework_violet6"));
+            explosionRegions.add(atlas.findRegion("firework_violet7"));
+
+            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+        }
+    }
+
+    public class YellowFireworkAssets {
+
+        public final Animation explosion;
+
+        public YellowFireworkAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> explosionRegions = new Array<TextureAtlas.AtlasRegion>();
+            explosionRegions.add(atlas.findRegion("firework_yellow0"));
+            explosionRegions.add(atlas.findRegion("firework_yellow1"));
+            explosionRegions.add(atlas.findRegion("firework_yellow2"));
+            explosionRegions.add(atlas.findRegion("firework_yellow3"));
+            explosionRegions.add(atlas.findRegion("firework_yellow4"));
+            explosionRegions.add(atlas.findRegion("firework_yellow5"));
+            explosionRegions.add(atlas.findRegion("firework_yellow6"));
+            explosionRegions.add(atlas.findRegion("firework_yellow7"));
+
+            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
         }
     }
 }

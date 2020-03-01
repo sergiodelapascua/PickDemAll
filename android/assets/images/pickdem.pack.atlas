@@ -48,7 +48,7 @@ Run(8)
   index: -1
 agua
   rotate: false
-  xy: 832, 44
+  xy: 946, 44
   size: 16, 13
   orig: 16, 13
   offset: 0, 0
@@ -62,14 +62,14 @@ arbol
   index: -1
 arbusto
   rotate: false
-  xy: 850, 47
+  xy: 964, 47
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
   index: -1
 bloque
   rotate: false
-  xy: 801, 41
+  xy: 915, 41
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -102,9 +102,30 @@ enredadera
   orig: 12, 47
   offset: 0, 0
   index: -1
+explosion-large
+  rotate: false
+  xy: 801, 21
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+explosion-medium
+  rotate: false
+  xy: 839, 21
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+explosion-small
+  rotate: false
+  xy: 877, 21
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
 flor
   rotate: false
-  xy: 819, 43
+  xy: 933, 43
   size: 11, 14
   orig: 11, 14
   offset: 0, 0

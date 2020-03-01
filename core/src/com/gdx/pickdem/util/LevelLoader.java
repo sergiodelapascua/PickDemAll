@@ -56,38 +56,16 @@ public class LevelLoader {
             final JSONObject platformObject = (JSONObject) object;
 
             final float x = safeGetFloat(platformObject, "x");
-
-            // TODO: Get the y position of the platform
-            // Use the LEVEL_Y_KEY constant we defined
-            // Not that this is the BOTTOM of the platform, not the top
-            // Also note that if the platform is at (0, 0), the x and y keys will be missing from the JSON
-            // Hence the need for the safeGetFloat() method defined above
             final float y = safeGetFloat(platformObject, "y");
 
             final float width = ((Number) platformObject.get("width")).floatValue();
-
-            // TODO: Get the platform height
             final float height = ((Number) platformObject.get("height")).floatValue();
-
-            // TODO: Optional, log the location and dimensions of the platform
             Gdx.app.log(TAG,
                     "Loaded a platform at x = " + x + " y = " + (y + height) + " w = " + width + " h = " + height);
 
-            // TODO: Make a new platform with the dimensions we loaded
-            // Remember that the y position we loaded is the platform bottom, not top
             final Platform platform = new Platform(x, y + height, width, height);
-
-            // TODO: Add the platform to the platformArray
             platformArray.add(platform);
-
-            // TODO: Get the platform identifier
-            // Use the LEVEL_IDENTIFIER_KEY constant
-            final String identifier = (String) platformObject.get("itemIdentifier");
         }
-
-        // TODO: Sort the platform array by descending position of the top of the platform
-        // We're doing this so lower platforms aren't hidden by higher platforms
-        // This one is tough. Check out the solution project if you run into trouble
         platformArray.sort(new Comparator<Platform>() {
             @Override
             public int compare(Platform o1, Platform o2) {
@@ -99,11 +77,6 @@ public class LevelLoader {
                 return 0;
             }
         });
-
-        // TODO: Add all the platforms from platformArray to the level
         level.getPlatforms().addAll(platformArray);
-
-        System.out.printf("NUMERO DE PLAT " + platformArray.size);
     }
-
 }

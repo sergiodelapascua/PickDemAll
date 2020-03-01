@@ -51,7 +51,7 @@ public class Robot {
         init();
     }
 
-    public void init(){
+    public void init() {
         collectedCoins = 0;
         position.set(spawn);
         lastFramePosition.set(spawn);
@@ -66,12 +66,12 @@ public class Robot {
     }
 
     private void generateCoins() {
-        if(level.getPlatforms().size > 0) {
+        if (level.getPlatforms().size > 0) {
             collectedCoins = 0;
             coins = new DelayedRemovalArray<Coin>();
             List<Integer> platformIndex = new ArrayList<Integer>();
             while (platformIndex.size() != Constants.COINS) {
-                int index = (int) (Math.random() * level.getPlatforms().size-1) + 1;
+                int index = (int) (Math.random() * level.getPlatforms().size - 1) + 1;
                 if (platformIndex.contains(index))
                     continue;
                 else
@@ -80,7 +80,7 @@ public class Robot {
 
             for (Integer i : platformIndex) {
                 Platform p = level.getPlatforms().get(i);
-                float x = (float) ((Math.random() * ((p.right-10) - p.left)) + p.left);
+                float x = (float) ((Math.random() * ((p.right - 10) - p.left)) + p.left);
                 //float x = (p.right - p.left)/2 + p.left;
                 float y = p.top + 1;
                 coins.add(new Coin(new Vector2(x, y)));
@@ -90,9 +90,9 @@ public class Robot {
 
     //==============================================================================================
     public void update(float delta, Array<Platform> platforms) {
-        if(coins == null)
+        if (coins == null)
             generateCoins();
-        if(collectedCoins == 6 && level.isAdded() == false)
+        if (collectedCoins == 6 && !level.isAdded())
             level.addPortal();
         lastFramePosition.set(position);
         velocity.y -= delta * Constants.GRAVITY;
@@ -145,12 +145,12 @@ public class Robot {
             moveLeft(delta);
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D))
             moveRight(delta);
-        else if ((Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S))&& jumpState != JumpState.FALLING){
-            position.y = position.y-2;
-        }else
+        else if ((Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) && jumpState != JumpState.FALLING) {
+            position.y = position.y - 2;
+        } else
             walkState = WalkState.STANDING;
 
-        if (Gdx.input.isKeyPressed(Input.Keys.Z) || Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.Z) || Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
             switch (jumpState) {
                 case GROUNDED:
                     startJump();

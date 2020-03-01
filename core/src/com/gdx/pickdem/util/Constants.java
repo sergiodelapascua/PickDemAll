@@ -7,7 +7,7 @@ public class Constants {
 
     public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final float WORLD_SIZE = 140;
-    public static final float COINS = 6;
+    public static final int COINS = 6;
     public static final float PORTAL_RADIUS = 12;
     public static final float PORTAL_HEIGHT = 50;
     public static final Vector2 COIN_CENTER = new Vector2(5, 6);
@@ -35,4 +35,17 @@ public class Constants {
     public static final float JUMP_SPEED = WORLD_SIZE/2;
     public static final float MAX_JUMP_DURATION = .2f;
     public static final float GRAVITY = WORLD_SIZE;
+    public static final float HUD_VIEWPORT_SIZE = 480;
+    public static final float HUD_MARGIN = 20;
+
+    public static final String EXPLOSION_LARGE = "explosion-large";
+    public static final String EXPLOSION_MEDIUM = "explosion-medium";
+    public static final String EXPLOSION_SMALL = "explosion-small";
+    public static final Vector2 EXPLOSION_CENTER = new Vector2(8, 8);
+    public static final float EXPLOSION_DURATION = 0.5f;
+    public static final float LEVEL_END_DURATION = 5;
+    public static final String VICTORY_MESSAGE = "VICTORY!";
+    public static final String GAME_OVER_MESSAGE = "Game Over";
+    public static final int EXPLOSION_COUNT =500;
+    public static final String FONT_FILE = "font/header.fnt";
 }

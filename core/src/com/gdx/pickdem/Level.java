@@ -1,7 +1,6 @@
 package com.gdx.pickdem;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -68,24 +67,28 @@ public class Level {
         if(robot.getCollectedCoins() != 6) {
             portal = null;
             added = false;
+            complete = false;
         }
 
         if(portal != null) {
-            if(new Vector2(robot.position.x,robot.position.y - Constants.ROBOT_EYE_HEIGHT).dst(portal.position) < Constants.PORTAL_RADIUS){
+            if(robot.position.x > portal.position.x && robot.position.x + Constants.ROBOT_STANCE_WIDTH < portal.position.x + Constants.PORTAL_RADIUS*2
+                    && robot.position.y > portal.position.y && robot.position.y < portal.position.y + Constants.PORTAL_HEIGHT){
                 complete = true;
             }
         }
 
-        robot.update(delta, platforms);
         //TODO: Atento a que este activo
-        //owl.update(delta);
+        if(!complete) {
+            robot.update(delta, platforms);
+            //owl.update(delta);
+        }
     }
 
-    public void render(SpriteBatch batch, ShapeRenderer renderer) {
+    public void render(SpriteBatch batch) {
 
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        /*renderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        /*renderer.setColor(1, 0, 0, 1);
+        renderer.setColor(1, 0, 0, 1);
         renderer.line(0,0,200,15);
 
         renderer.line(10,0,10,80);
@@ -107,11 +110,11 @@ public class Level {
         renderer.line(rightFoot, 0, rightFoot, 100);
         renderer.setColor(0, 0, 1, 1);
         renderer.line(middle, 0, middle, 100);
-        renderer.line(-100, robot.position.y, 100, robot.position.y);
-        renderer.line(-100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT, 100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT);*/
+        renderer.line(-100, robot.position.y, 100, robot.positioRADIUSn.y);
+        renderer.line(-100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT, 100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT);
 
         //=========
-        renderer.end();
+        renderer.end();*/
 
         batch.begin();
         water.render(batch);
@@ -201,7 +204,4 @@ public class Level {
         return complete;
     }
 
-    public void setComplete(boolean complete) {
-        this.complete = complete;
-    }
 }
