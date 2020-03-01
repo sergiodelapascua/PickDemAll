@@ -1,6 +1,6 @@
 android {
-    buildToolsVersion "29.0.2"
-    compileSdkVersion 29
+    buildToolsVersion "27.0.3"
+    compileSdkVersion 27
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -12,7 +12,7 @@ android {
             jniLibs.srcDirs = ['libs']
         }
 
-        instrumentTest.setRoot('tests')
+        //instrumentTest.setRoot('tests')
     }
 }
 

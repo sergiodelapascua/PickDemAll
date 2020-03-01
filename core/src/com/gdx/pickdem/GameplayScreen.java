@@ -8,12 +8,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.gdx.pickdem.overlays.GameOverOverlay;
 import com.gdx.pickdem.overlays.PickDemHud;
 import com.gdx.pickdem.overlays.VictoryOverlay;
 import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.ChaseCam;
 import com.gdx.pickdem.util.Constants;
 import com.gdx.pickdem.util.LevelLoader;
+import com.gdx.pickdem.util.Timer;
 import com.gdx.pickdem.util.Utils;
 
 public class GameplayScreen extends ScreenAdapter {
@@ -29,7 +31,10 @@ public class GameplayScreen extends ScreenAdapter {
     private PickDemHud hud;
     private boolean victory;
     private VictoryOverlay victoryOverlay;
+    private GameOverOverlay gameOverOverlay;
     private long levelEndOverlayStartTime;
+    private Timer timer;
+    private boolean gameOver;
 
     @Override
     public void show() {
@@ -39,23 +44,32 @@ public class GameplayScreen extends ScreenAdapter {
         AssetManager am3 = new AssetManager();
         AssetManager am4 = new AssetManager();
         Assets.instance.init(am, am1, am2, am3, am4);
+
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         startNewLevel();
+
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         chaseCam = new ChaseCam(viewport.getCamera(), level.getRobot(), level);
+
         victory = false;
+        gameOver = false;
         victoryOverlay = new VictoryOverlay();
+        gameOverOverlay = new GameOverOverlay();
         levelEndOverlayStartTime = 0;
     }
 
     @Override
     public void resize(int width, int height) {
-        hud.viewport.update(width, height, true);
         if(victory)
             victoryOverlay.viewport.update(width, height, true);
-        viewport.update(width, height, true);
+        else if(gameOver)
+            gameOverOverlay.viewport.update(width, height, true);
+        else {
+            hud.viewport.update(width, height, true);
+            viewport.update(width, height, true);
+        }
     }
 
     @Override
@@ -66,20 +80,27 @@ public class GameplayScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        level.update(delta);
-        chaseCam.update();
+        if (timer == null){
+            timer = new Timer();
+            timer.startTimer();
+        }
+        timer.updateCountDownText();
         viewport.apply();
-        Gdx.gl.glClearColor(
-                Constants.BACKGROUND_COLOR.r,
-                Constants.BACKGROUND_COLOR.g,
-                Constants.BACKGROUND_COLOR.b,
-                Constants.BACKGROUND_COLOR.a);
+        Gdx.gl.glClearColor(Constants.BACKGROUND_COLOR.r, Constants.BACKGROUND_COLOR.g, Constants.BACKGROUND_COLOR.b, Constants.BACKGROUND_COLOR.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         batch.setProjectionMatrix(viewport.getCamera().combined);
         renderer.setProjectionMatrix(viewport.getCamera().combined);
+        if(timer.getCountdown() > 0){
+            level.update(delta);
+            chaseCam.update();
+            level.render(batch);
+        } else {
+            gameOver = true;
+            resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        }
         level.render(batch);
-        hud.render(batch, level.getRobot().getCollectedCoins());
+        hud.render(batch, level.getRobot().getCollectedCoins(), timer.getCountdown());
         if(level.isComplete()) {
             startNewLevel();
         }
@@ -89,7 +110,6 @@ public class GameplayScreen extends ScreenAdapter {
     private void renderLevelEndOverlays(SpriteBatch batch) {
         if (victory) {
             if (levelEndOverlayStartTime == 0) {
-                System.out.println("E");
                 levelEndOverlayStartTime = TimeUtils.nanoTime();
                 victoryOverlay.init();
             }
@@ -97,13 +117,28 @@ public class GameplayScreen extends ScreenAdapter {
 
             if (Utils.secondsSince(levelEndOverlayStartTime) > Constants.LEVEL_END_DURATION) {
                 levelEndOverlayStartTime = 0;
-                startNewLevel();
+                //TODO: cambiar a que salga el menú
+                System.exit(0);
+            }
+        }
+        if (gameOver) {
+            if (levelEndOverlayStartTime == 0) {
+                levelEndOverlayStartTime = TimeUtils.nanoTime();
+                gameOverOverlay.init();
+            }
+            gameOverOverlay.render(batch);
+
+            if (Utils.secondsSince(levelEndOverlayStartTime) > Constants.LEVEL_END_DURATION) {
+                //TODO: cambiar a que salga el menú
+                dispose();
+                System.exit(0);
             }
         }
     }
 
     private void startNewLevel() {
         victory = false;
+        timer = null;
         hud = new PickDemHud();
         String nextLevel = "";
         if (loadedLevel.equals("")) {
@@ -116,7 +151,7 @@ public class GameplayScreen extends ScreenAdapter {
             victory = true;
         }
         if(!victory) {
-            level = LevelLoader.load(nextLevel, viewport);
+            level = LevelLoader.load(nextLevel, viewport, timer);
             chaseCam = new ChaseCam(viewport.getCamera(), level.getRobot(), level);
         }
         resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

@@ -25,16 +25,12 @@ public class PickDemHud {
         font.getData().setScale(1);
     }
 
-    public void render(SpriteBatch batch, int coins) {
+    public void render(SpriteBatch batch, int coins, int segundos) {
         viewport.apply();
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
-        // TODO: Draw GigaGal's score and ammo count in the top left of the viewport
-        /*final String hudString =
-                Constants.HUD_SCORE_LABEL + score + "\n" +
-                        Constants.HUD_AMMO_LABEL + ammo;*/
-        final String hudString = "Hola mundo";
+        final String hudString ="Time remaining: "+ segundos;
 
         font.draw(batch, hudString, Constants.HUD_MARGIN, viewport.getWorldHeight() - Constants.HUD_MARGIN);
 

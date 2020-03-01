@@ -1,4 +1,4 @@
-package com.gdx.pickdem.environment;
+package com.gdx.pickdem.overlays;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -6,9 +6,9 @@ import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.Constants;
 import com.gdx.pickdem.util.Utils;
 
-public class YellowFirework  extends Explosion {
+public class BlueFirework extends OverlayAnimation {
 
-    public YellowFirework(Vector2 position) {
+    public BlueFirework(Vector2 position) {
         super(position);
     }
 
@@ -17,7 +17,7 @@ public class YellowFirework  extends Explosion {
         if (!isFinished() && !yetToStart()) {
             Utils.drawTextureRegion(
                     batch,
-                    Assets.instance.yellowFireworkAssets.explosion.getKeyFrame(Utils.secondsSince(getStartTime()) - offset),
+                    Assets.instance.blueFireworkAssets.explosion.getKeyFrame(Utils.secondsSince(getStartTime()) - offset),
                     super.getPositionX() - Constants.EXPLOSION_CENTER.x,
                     super.getPositionY() - Constants.EXPLOSION_CENTER.y
             );

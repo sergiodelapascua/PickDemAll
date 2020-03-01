@@ -48,7 +48,7 @@ Run(8)
   index: -1
 agua
   rotate: false
-  xy: 946, 44
+  xy: 969, 44
   size: 16, 13
   orig: 16, 13
   offset: 0, 0
@@ -62,14 +62,14 @@ arbol
   index: -1
 arbusto
   rotate: false
-  xy: 964, 47
+  xy: 933, 24
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
   index: -1
 bloque
   rotate: false
-  xy: 915, 41
+  xy: 951, 41
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -93,6 +93,20 @@ buho(3)
   xy: 2, 2
   size: 80, 82
   orig: 80, 82
+  offset: 0, 0
+  index: -1
+calavera1
+  rotate: false
+  xy: 915, 35
+  size: 16, 22
+  orig: 16, 22
+  offset: 0, 0
+  index: -1
+calavera2
+  rotate: false
+  xy: 933, 36
+  size: 16, 21
+  orig: 16, 21
   offset: 0, 0
   index: -1
 enredadera
@@ -125,7 +139,7 @@ explosion-small
   index: -1
 flor
   rotate: false
-  xy: 933, 43
+  xy: 969, 28
   size: 11, 14
   orig: 11, 14
   offset: 0, 0

@@ -17,8 +17,10 @@ import com.gdx.pickdem.environment.Tree;
 import com.gdx.pickdem.environment.Wall;
 import com.gdx.pickdem.environment.Water;
 import com.gdx.pickdem.util.Constants;
+import com.gdx.pickdem.util.Timer;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Level {
@@ -30,16 +32,18 @@ public class Level {
     private float maxX;
     private Wall walls;
     private Water water;
-    private List<Environment> environments;
+    private Array<Environment> environments;
     private Portal portal;
     private boolean added;
     private boolean complete;
+    private Timer timer;
 
-    public Level(Viewport viewport) {
+    public Level(Viewport viewport, Timer t) {
         this.viewport = viewport;
         platforms = new Array<Platform>();
         environments = null;
         maxX= Integer.MIN_VALUE;
+        this.timer = t;
         walls = null;
         water = null;
         portal = null;
@@ -160,7 +164,7 @@ public class Level {
 
     public void generateEnvironment(){
         if(platforms.size > 0) {
-            environments = new ArrayList<Environment>();
+            environments = new Array<Environment>();
             List<Integer> platformIndex = new ArrayList<Integer>();
             while (platformIndex.size() < 60) {
                 int index = (int) (Math.random() * platforms.size - 1) + 1;
@@ -193,6 +197,17 @@ public class Level {
                         break;
                 }
             }
+            environments.sort(new Comparator<Environment>() {
+                @Override
+                public int compare(Environment o1, Environment o2) {
+                    if (o1.position.y < o2.position.y) {
+                        return 1;
+                    } else if (o1.position.y > o2.position.y) {
+                        return -1;
+                    }
+                    return 0;
+                }
+            });
         }
     }
 

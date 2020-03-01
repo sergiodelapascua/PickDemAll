@@ -33,6 +33,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public BlueFireworkAssets blueFireworkAssets;
     public VioletFireworkAssets violetFireworkAssets;
     public YellowFireworkAssets yellowFireworkAssets;
+    public SkullAssets skullAssets;
 
     private AssetManager assetManager;
     private AssetManager assetManager1;
@@ -63,6 +64,7 @@ public class Assets implements Disposable, AssetErrorListener {
         bushAssets = new BushAssets(atlas);
         portalAssets = new PortalAssets(atlas);
         explosionAssets = new ExplosionAssets(atlas);
+        skullAssets = new SkullAssets(atlas);
 
         this.assetManager1 = am1;
         assetManager1.setErrorListener(this);
@@ -184,71 +186,55 @@ public class Assets implements Disposable, AssetErrorListener {
     }
 
     public class CoinAssets {
-
         public final TextureAtlas.AtlasRegion coin;
-
         public CoinAssets(TextureAtlas atlas) {
             coin = atlas.findRegion("moneda");
         }
     }
 
     public class WallAssets {
-
         public final TextureAtlas.AtlasRegion wall;
-
         public WallAssets(TextureAtlas atlas) {
             wall = atlas.findRegion("muro");
         }
     }
 
     public class WaterAssets {
-
         public final TextureAtlas.AtlasRegion water;
-
         public WaterAssets(TextureAtlas atlas) {
             water = atlas.findRegion("agua");
         }
     }
 
     public class FlowerAssets {
-
         public final TextureAtlas.AtlasRegion flower;
-
         public FlowerAssets(TextureAtlas atlas) {
             flower = atlas.findRegion("flor");
         }
     }
 
     public class TreeAssets {
-
         public final TextureAtlas.AtlasRegion tree;
-
-        //public TreeAssets(TextureAtlas atlas) { tree = atlas.findRegion("arbol"); }
-        public TreeAssets(TextureAtlas atlas) { tree = atlas.findRegion("tronco"); }
+        public TreeAssets(TextureAtlas atlas) { tree = atlas.findRegion("arbol"); }
+        //public TreeAssets(TextureAtlas atlas) { tree = atlas.findRegion("tronco"); }
     }
 
     public class LittleRockAssets {
-
         public final TextureAtlas.AtlasRegion rock;
-
         public LittleRockAssets(TextureAtlas atlas) {
             rock = atlas.findRegion("roca(1)");
         }
     }
 
     public class BigRockAssets {
-
         public final TextureAtlas.AtlasRegion rock;
-
         public BigRockAssets(TextureAtlas atlas) {
             rock = atlas.findRegion("roca(2)");
         }
     }
 
     public class BushAssets {
-
         public final TextureAtlas.AtlasRegion arbusto;
-
         public BushAssets(TextureAtlas atlas) {
             arbusto = atlas.findRegion("arbusto");
         }
@@ -280,7 +266,7 @@ public class Assets implements Disposable, AssetErrorListener {
             explosionRegions.add(atlas.findRegion("explosion-medium"));
             explosionRegions.add(atlas.findRegion("explosion-large"));
 
-            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+            explosion = new Animation(Constants.OVERLAY_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
         }
     }
 
@@ -300,7 +286,7 @@ public class Assets implements Disposable, AssetErrorListener {
             explosionRegions.add(atlas.findRegion("firework_red6"));
             explosionRegions.add(atlas.findRegion("firework_red7"));
 
-            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+            explosion = new Animation(Constants.OVERLAY_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
         }
     }
 
@@ -320,7 +306,7 @@ public class Assets implements Disposable, AssetErrorListener {
             explosionRegions.add(atlas.findRegion("firework_blue6"));
             explosionRegions.add(atlas.findRegion("firework_blue7"));
 
-            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+            explosion = new Animation(Constants.OVERLAY_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
         }
     }
 
@@ -340,7 +326,7 @@ public class Assets implements Disposable, AssetErrorListener {
             explosionRegions.add(atlas.findRegion("firework_violet6"));
             explosionRegions.add(atlas.findRegion("firework_violet7"));
 
-            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+            explosion = new Animation(Constants.OVERLAY_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
         }
     }
 
@@ -360,7 +346,21 @@ public class Assets implements Disposable, AssetErrorListener {
             explosionRegions.add(atlas.findRegion("firework_yellow6"));
             explosionRegions.add(atlas.findRegion("firework_yellow7"));
 
-            explosion = new Animation(Constants.EXPLOSION_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+            explosion = new Animation(Constants.OVERLAY_DURATION / explosionRegions.size, explosionRegions, Animation.PlayMode.NORMAL);
+        }
+    }
+
+    public class SkullAssets {
+
+        public final Animation skull;
+
+        public SkullAssets(TextureAtlas atlas) {
+
+            Array<TextureAtlas.AtlasRegion> regions = new Array<TextureAtlas.AtlasRegion>();
+            regions.add(atlas.findRegion("calavera1"));
+            regions.add(atlas.findRegion("calavera2"));
+
+            skull = new Animation(Constants.OVERLAY_DURATION, regions, Animation.PlayMode.LOOP);
         }
     }
 }

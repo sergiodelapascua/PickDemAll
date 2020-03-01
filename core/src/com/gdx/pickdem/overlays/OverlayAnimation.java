@@ -1,4 +1,4 @@
-package com.gdx.pickdem.environment;
+package com.gdx.pickdem.overlays;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -7,13 +7,13 @@ import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.Constants;
 import com.gdx.pickdem.util.Utils;
 
-public class Explosion {
+public class OverlayAnimation {
 
     private final Vector2 position;
     private final long startTime;
     public float offset = 0;
 
-    public Explosion(Vector2 position) {
+    public OverlayAnimation(Vector2 position) {
         this.position = position;
         startTime = TimeUtils.nanoTime();
     }

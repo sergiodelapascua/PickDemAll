@@ -10,11 +10,6 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.gdx.pickdem.environment.BlueFirework;
-import com.gdx.pickdem.environment.Explosion;
-import com.gdx.pickdem.environment.RedFirework;
-import com.gdx.pickdem.environment.VioletFirework;
-import com.gdx.pickdem.environment.YellowFirework;
 import com.gdx.pickdem.util.Constants;
 
 public class VictoryOverlay {
@@ -22,7 +17,7 @@ public class VictoryOverlay {
     public final static String TAG = VictoryOverlay.class.getName();
     public final Viewport viewport;
     final BitmapFont font;
-    Array<Explosion> explosions;
+    Array<OverlayAnimation> explosions;
 
     public VictoryOverlay() {
         this.viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
@@ -31,17 +26,17 @@ public class VictoryOverlay {
     }
 
     public void init() {
-        explosions = new Array<Explosion>(Constants.EXPLOSION_COUNT);
-        for (int i = 0; i < Constants.EXPLOSION_COUNT; i++) {
+        explosions = new Array<OverlayAnimation>(Constants.OVERLAY_COUNT);
+        for (int i = 0; i < Constants.OVERLAY_COUNT; i++) {
             int random = (int) (Math.random()*4)+1;
-            Explosion explosion = generateFireWork(random);
-            explosion.offset = MathUtils.random(Constants.LEVEL_END_DURATION);
+            OverlayAnimation overlayAnimation = generateFireWork(random);
+            overlayAnimation.offset = MathUtils.random(Constants.LEVEL_END_DURATION);
 
-            explosions.add(explosion);
+            explosions.add(overlayAnimation);
         }
     }
 
-    private Explosion generateFireWork(int option){
+    private OverlayAnimation generateFireWork(int option){
         switch (option){
             case 1:
                 return new RedFirework(new Vector2(MathUtils.random(viewport.getWorldWidth()), MathUtils.random(viewport.getWorldHeight())));
@@ -59,8 +54,8 @@ public class VictoryOverlay {
         viewport.apply();
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
-        for (Explosion explosion : explosions){
-            explosion.render(batch);
+        for (OverlayAnimation overlayAnimation : explosions){
+            overlayAnimation.render(batch);
         }
         font.draw(batch, Constants.VICTORY_MESSAGE, viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2.f, 0, Align.center, false);
 

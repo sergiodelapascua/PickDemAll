@@ -18,9 +18,9 @@ public class LevelLoader {
 
     public static final String TAG = LevelLoader.class.toString();
 
-    public static Level load(String levelName, Viewport viewport) {
+    public static Level load(String levelName, Viewport viewport, Timer t) {
 
-        Level level = new Level(viewport);
+        Level level = new Level(viewport, t);
         String path = "levels" + File.separator + levelName + "." + "dt";
 
         FileHandle file = Gdx.files.internal(path);
@@ -60,8 +60,7 @@ public class LevelLoader {
 
             final float width = ((Number) platformObject.get("width")).floatValue();
             final float height = ((Number) platformObject.get("height")).floatValue();
-            Gdx.app.log(TAG,
-                    "Loaded a platform at x = " + x + " y = " + (y + height) + " w = " + width + " h = " + height);
+            //Gdx.app.log(TAG,"Loaded a platform at x = " + x + " y = " + (y + height) + " w = " + width + " h = " + height);
 
             final Platform platform = new Platform(x, y + height, width, height);
             platformArray.add(platform);
