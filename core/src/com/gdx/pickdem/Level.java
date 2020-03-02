@@ -84,7 +84,7 @@ public class Level {
         //TODO: Atento a que este activo
         if(!complete) {
             robot.update(delta, platforms);
-            //owl.update(delta);
+            owl.update(delta);
         }
     }
 

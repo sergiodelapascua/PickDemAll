@@ -41,14 +41,12 @@ public class MenuScreen extends InputAdapter implements Screen {
         AssetManager am4 = new AssetManager();
         Assets.instance.init(am, am1, am2, am3, am4);
 
-        // TODO: Initialize a FitViewport with the difficulty world size constant
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         /*this.p = new Platform(viewport.getWorldWidth()/2 + 45,
                 viewport.getWorldHeight()/2 + 100, 90, 50);*/
         Gdx.input.setInputProcessor(this);
 
         font = new BitmapFont(Gdx.files.internal(Constants.FONT_FILE));
-        // TODO: Set the font scale using the constant we defined
         font.getData().setScale(1.5f);
     }
 

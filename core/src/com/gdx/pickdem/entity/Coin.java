@@ -9,7 +9,7 @@ import com.gdx.pickdem.util.Utils;
 public class Coin {
     final public Vector2 position;
 
-    public Coin(Vector2 position) {
+    Coin(Vector2 position) {
         this.position = position;
     }
 

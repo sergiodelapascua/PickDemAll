@@ -13,9 +13,9 @@ import com.gdx.pickdem.util.Utils;
 public class Owl {
 
     public Vector2 position;
-    public Robot robot;
-    public Facing facing;
-    public float flyStartTime;
+    private Robot robot;
+    private Facing facing;
+    private float flyStartTime;
 
     public Owl(Robot r){
         facing = Facing.RIGHT;

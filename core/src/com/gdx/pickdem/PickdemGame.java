@@ -11,12 +11,10 @@ public class PickdemGame extends Game {
 
 
 	public void showMenuScreen() {
-		// TODO: Show the difficulty screen
 		setScreen(new MenuScreen(this));
 	}
 
 	public void showGameScreen() {
-		// TODO: Show the Icicles screen with the appropriate difficulty
 		setScreen(new GameplayScreen(this));
 	}
 }

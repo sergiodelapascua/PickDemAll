@@ -26,7 +26,7 @@ import java.util.List;
 public class Robot {
 
     public final static String TAG = Robot.class.getName();
-    public Vector2 spawn;
+    private Vector2 spawn;
     public Vector2 position;
     private Vector2 lastFramePosition;
     private Facing facing;
