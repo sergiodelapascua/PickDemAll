@@ -3,7 +3,6 @@ package com.gdx.pickdem;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -39,13 +38,14 @@ public class GameplayScreen extends ScreenAdapter {
     private boolean gameOver;
     private OnscreenControls onscreenControls;;
 
+    private PickdemGame game;
+
+    public GameplayScreen(PickdemGame g){
+        this.game = g;
+    }
+
     @Override
-    public void show() {AssetManager am = new AssetManager();
-        AssetManager am1 = new AssetManager();
-        AssetManager am2 = new AssetManager();
-        AssetManager am3 = new AssetManager();
-        AssetManager am4 = new AssetManager();
-        Assets.instance.init(am, am1, am2, am3, am4);
+    public void show() {
 
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
@@ -131,9 +131,7 @@ public class GameplayScreen extends ScreenAdapter {
 
             if (Utils.secondsSince(levelEndOverlayStartTime) > Constants.LEVEL_END_DURATION) {
                 levelEndOverlayStartTime = 0;
-                //TODO: cambiar a que salga el menú
-                System.exit(0);
-                //game.showMenuScreen();
+                game.showMenuScreen();
             }
         }
         if (gameOver) {
@@ -144,10 +142,8 @@ public class GameplayScreen extends ScreenAdapter {
             gameOverOverlay.render(batch);
 
             if (Utils.secondsSince(levelEndOverlayStartTime) > Constants.LEVEL_END_DURATION) {
-                //TODO: cambiar a que salga el menú
-                dispose();
-                System.exit(0);
-                //game.showMenuScreen();
+                levelEndOverlayStartTime = 0;
+                game.showMenuScreen();
             }
         }
     }
