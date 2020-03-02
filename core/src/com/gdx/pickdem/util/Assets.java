@@ -34,6 +34,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public VioletFireworkAssets violetFireworkAssets;
     public YellowFireworkAssets yellowFireworkAssets;
     public SkullAssets skullAssets;
+    public OnscreenControlsAssets onscreenControlsAssets;
 
     private AssetManager assetManager;
     private AssetManager assetManager1;
@@ -65,6 +66,7 @@ public class Assets implements Disposable, AssetErrorListener {
         portalAssets = new PortalAssets(atlas);
         explosionAssets = new ExplosionAssets(atlas);
         skullAssets = new SkullAssets(atlas);
+        onscreenControlsAssets = new OnscreenControlsAssets(atlas);
 
         this.assetManager1 = am1;
         assetManager1.setErrorListener(this);
@@ -361,6 +363,21 @@ public class Assets implements Disposable, AssetErrorListener {
             regions.add(atlas.findRegion("calavera2"));
 
             skull = new Animation(Constants.OVERLAY_DURATION, regions, Animation.PlayMode.LOOP);
+        }
+    }
+
+    public class OnscreenControlsAssets {
+
+        public final TextureAtlas.AtlasRegion moveRight;
+        public final TextureAtlas.AtlasRegion moveLeft;
+        public final TextureAtlas.AtlasRegion shoot;
+        public final TextureAtlas.AtlasRegion jump;
+
+        public OnscreenControlsAssets(TextureAtlas atlas) {
+            moveRight = atlas.findRegion(Constants.MOVE_RIGHT_BUTTON);
+            moveLeft = atlas.findRegion(Constants.MOVE_LEFT_BUTTON);
+            shoot = atlas.findRegion(Constants.SHOOT_BUTTON);
+            jump = atlas.findRegion(Constants.JUMP_BUTTON);
         }
     }
 }

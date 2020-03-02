@@ -28,7 +28,7 @@ public class Level {
     private Robot robot;
     private Owl owl;
     private Array<Platform> platforms;
-    private Viewport viewport;
+    public Viewport viewport;
     private float maxX;
     private Wall walls;
     private Water water;
@@ -218,5 +218,4 @@ public class Level {
     public boolean isComplete() {
         return complete;
     }
-
 }

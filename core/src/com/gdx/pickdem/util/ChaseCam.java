@@ -5,7 +5,7 @@ import com.gdx.pickdem.Level;
 import com.gdx.pickdem.entity.Robot;
 public class ChaseCam {
 
-    private Camera camera;
+    public Camera camera;
     private Robot target;
     private Level level;
 

@@ -6,212 +6,240 @@ filter: Nearest,Nearest
 repeat: none
 Idle(10)
   rotate: false
-  xy: 747, 551
+  xy: 747, 552
   size: 273, 467
   orig: 273, 467
   offset: 0, 0
   index: -1
 Jump(5)
   rotate: false
-  xy: 2, 86
+  xy: 2, 87
   size: 352, 431
   orig: 352, 431
   offset: 0, 0
   index: -1
 Jump(7)
   rotate: false
-  xy: 358, 541
+  xy: 358, 542
   size: 387, 477
   orig: 387, 477
   offset: 0, 0
   index: -1
 Jump(9)
   rotate: false
-  xy: 2, 519
+  xy: 2, 520
   size: 354, 499
   orig: 354, 499
   offset: 0, 0
   index: -1
 Run(6)
   rotate: false
-  xy: 358, 42
+  xy: 358, 43
   size: 337, 497
   orig: 337, 497
   offset: 0, 0
   index: -1
 Run(8)
   rotate: false
-  xy: 697, 59
+  xy: 697, 60
   size: 315, 480
   orig: 315, 480
   offset: 0, 0
   index: -1
 agua
   rotate: false
-  xy: 969, 44
+  xy: 309, 22
   size: 16, 13
   orig: 16, 13
   offset: 0, 0
   index: -1
 arbol
   rotate: false
-  xy: 773, 9
+  xy: 773, 10
   size: 12, 48
   orig: 12, 48
   offset: 0, 0
   index: -1
 arbusto
   rotate: false
-  xy: 933, 24
+  xy: 309, 10
   size: 14, 10
   orig: 14, 10
   offset: 0, 0
   index: -1
 bloque
   rotate: false
-  xy: 951, 41
+  xy: 951, 8
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 buho(1)
   rotate: false
-  xy: 164, 34
+  xy: 164, 35
   size: 78, 50
   orig: 78, 50
   offset: 0, 0
   index: -1
 buho(2)
   rotate: false
-  xy: 84, 2
+  xy: 84, 3
   size: 78, 82
   orig: 78, 82
   offset: 0, 0
   index: -1
 buho(3)
   rotate: false
-  xy: 2, 2
+  xy: 2, 3
   size: 80, 82
   orig: 80, 82
   offset: 0, 0
   index: -1
 calavera1
   rotate: false
-  xy: 915, 35
+  xy: 915, 2
   size: 16, 22
   orig: 16, 22
   offset: 0, 0
   index: -1
 calavera2
   rotate: false
-  xy: 933, 36
+  xy: 933, 3
   size: 16, 21
   orig: 16, 21
   offset: 0, 0
   index: -1
+down
+  rotate: false
+  xy: 915, 26
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 enredadera
   rotate: false
-  xy: 787, 10
+  xy: 787, 11
   size: 12, 47
   orig: 12, 47
   offset: 0, 0
   index: -1
 explosion-large
   rotate: false
-  xy: 801, 21
+  xy: 801, 22
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 explosion-medium
   rotate: false
-  xy: 839, 21
+  xy: 839, 22
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 explosion-small
   rotate: false
-  xy: 877, 21
+  xy: 877, 22
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 flor
   rotate: false
-  xy: 969, 28
+  xy: 296, 21
   size: 11, 14
   orig: 11, 14
   offset: 0, 0
   index: -1
+left
+  rotate: false
+  xy: 949, 26
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 moneda
   rotate: false
-  xy: 346, 72
+  xy: 346, 73
   size: 10, 12
   orig: 10, 12
   offset: 0, 0
   index: -1
 muro
   rotate: false
-  xy: 296, 36
+  xy: 296, 37
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 plat
   rotate: false
-  xy: 723, 9
+  xy: 723, 10
   size: 48, 48
   orig: 48, 48
   offset: 0, 0
   index: -1
 portal(1)
   rotate: false
-  xy: 244, 34
+  xy: 244, 35
   size: 24, 50
   orig: 24, 50
   offset: 0, 0
   index: -1
 portal(2)
   rotate: false
-  xy: 270, 34
+  xy: 270, 35
   size: 24, 50
   orig: 24, 50
   offset: 0, 0
   index: -1
 portal(4)
   rotate: false
-  xy: 270, 34
+  xy: 270, 35
   size: 24, 50
   orig: 24, 50
   offset: 0, 0
   index: -1
 portal(3)
   rotate: false
-  xy: 697, 7
+  xy: 697, 8
   size: 24, 50
   orig: 24, 50
   offset: 0, 0
   index: -1
+right
+  rotate: false
+  xy: 983, 26
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 roca(1)
   rotate: false
-  xy: 346, 52
+  xy: 346, 53
   size: 10, 5
   orig: 10, 5
   offset: 0, 0
   index: -1
 roca(2)
   rotate: false
-  xy: 747, 542
+  xy: 747, 543
   size: 12, 7
   orig: 12, 7
   offset: 0, 0
   index: -1
 tronco
   rotate: false
-  xy: 346, 59
+  xy: 346, 60
   size: 10, 11
   orig: 10, 11
+  offset: 0, 0
+  index: -1
+up
+  rotate: false
+  xy: 346, 9
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 

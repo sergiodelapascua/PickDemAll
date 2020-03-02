@@ -38,9 +38,6 @@ public class Constants {
     public static final float HUD_VIEWPORT_SIZE = 480;
     public static final float HUD_MARGIN = 20;
 
-    public static final String EXPLOSION_LARGE = "explosion-large";
-    public static final String EXPLOSION_MEDIUM = "explosion-medium";
-    public static final String EXPLOSION_SMALL = "explosion-small";
     public static final Vector2 EXPLOSION_CENTER = new Vector2(8, 8);
     public static final float OVERLAY_DURATION = 0.5f;
     public static final float LEVEL_END_DURATION = 5;
@@ -49,4 +46,12 @@ public class Constants {
     public static final int OVERLAY_COUNT =500;
     public static final int ENEMY_COUNT =1000;
     public static final String FONT_FILE = "font/header.fnt";
+
+    public static final float ONSCREEN_CONTROLS_VIEWPORT_SIZE = 200;
+    public static final String MOVE_LEFT_BUTTON = "left";
+    public static final String MOVE_RIGHT_BUTTON = "right";
+    public static final String SHOOT_BUTTON = "down";
+    public static final String JUMP_BUTTON = "up";
+    public static final Vector2 BUTTON_CENTER = new Vector2(16, 16);
+    public static final float BUTTON_RADIUS = 32;
 }

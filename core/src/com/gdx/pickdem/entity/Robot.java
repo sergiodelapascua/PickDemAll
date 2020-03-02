@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.gdx.pickdem.GameplayScreen;
 import com.gdx.pickdem.Level;
 import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.Constants;
@@ -35,6 +36,10 @@ public class Robot {
     private WalkState walkState;
     private long walkStartTime;
     private int collectedCoins;
+    public boolean jumpButtonPressed;
+    public boolean leftButtonPressed;
+    public boolean rightButtonPressed;
+    public boolean downButtonPressed;
 
     private Level level;
     private DelayedRemovalArray<Coin> coins;
@@ -47,6 +52,11 @@ public class Robot {
         lastFramePosition = new Vector2();
         velocity = new Vector2();
         coins = null;
+
+        jumpButtonPressed = false;
+        leftButtonPressed = false;
+        rightButtonPressed = false;
+        downButtonPressed = false;
 
         init();
     }
@@ -141,16 +151,18 @@ public class Robot {
         }
         coins.end();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A) || leftButtonPressed)
             moveLeft(delta);
-        else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D))
+        else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D) || rightButtonPressed)
             moveRight(delta);
-        else if ((Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) && jumpState != JumpState.FALLING) {
+        else if ((Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S) || downButtonPressed) && jumpState != JumpState.FALLING) {
             position.y = position.y - 2;
         } else
             walkState = WalkState.STANDING;
 
-        if (Gdx.input.isKeyPressed(Input.Keys.Z) || Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.Z) || Gdx.input.isKeyPressed(Input.Keys.W) ||
+                Gdx.input.isKeyPressed(Input.Keys.SPACE) || (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !GameplayScreen.onMobile())
+                || jumpButtonPressed) {
             switch (jumpState) {
                 case GROUNDED:
                     startJump();
