@@ -1,5 +1,7 @@
 package com.gdx.pickdem.util;
 
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -23,6 +25,26 @@ public class Utils {
                 region.getRegionHeight(),
                 1,
                 1,
+                0,
+                region.getRegionX(),
+                region.getRegionY(),
+                region.getRegionWidth(),
+                region.getRegionHeight(),
+                false,
+                false);
+    }
+
+    public static void drawButtonTextureRegion(SpriteBatch batch, TextureRegion region,float x, float y) {
+        batch.draw(
+                region.getTexture(),
+                x,
+                y,
+                0,
+                0,
+                region.getRegionWidth(),
+                region.getRegionHeight(),
+                0.5f,
+                0.5f,
                 0,
                 region.getRegionX(),
                 region.getRegionY(),
@@ -94,5 +116,9 @@ public class Utils {
 
     public static float secondsSince(long timeNanos) {
         return MathUtils.nanoToSec * (TimeUtils.nanoTime() - timeNanos);
+    }
+
+    public static boolean onMobile() {
+        return Gdx.app.getType() == Application.ApplicationType.Android || Gdx.app.getType() == Application.ApplicationType.iOS;
     }
 }

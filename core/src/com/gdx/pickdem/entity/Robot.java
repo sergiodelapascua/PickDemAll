@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.gdx.pickdem.GameplayScreen;
 import com.gdx.pickdem.Level;
 import com.gdx.pickdem.util.Assets;
 import com.gdx.pickdem.util.Constants;
@@ -161,7 +160,7 @@ public class Robot {
             walkState = WalkState.STANDING;
 
         if (Gdx.input.isKeyPressed(Input.Keys.Z) || Gdx.input.isKeyPressed(Input.Keys.W) ||
-                Gdx.input.isKeyPressed(Input.Keys.SPACE) || (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !GameplayScreen.onMobile())
+                Gdx.input.isKeyPressed(Input.Keys.SPACE) || (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !Utils.onMobile())
                 || jumpButtonPressed) {
             switch (jumpState) {
                 case GROUNDED:

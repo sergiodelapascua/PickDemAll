@@ -35,6 +35,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public YellowFireworkAssets yellowFireworkAssets;
     public SkullAssets skullAssets;
     public OnscreenControlsAssets onscreenControlsAssets;
+    public SoundAssets soundAssets;
 
     private AssetManager assetManager;
     private AssetManager assetManager1;
@@ -67,6 +68,7 @@ public class Assets implements Disposable, AssetErrorListener {
         explosionAssets = new ExplosionAssets(atlas);
         skullAssets = new SkullAssets(atlas);
         onscreenControlsAssets = new OnscreenControlsAssets(atlas);
+        soundAssets = new SoundAssets(atlas);
 
         this.assetManager1 = am1;
         assetManager1.setErrorListener(this);
@@ -239,6 +241,15 @@ public class Assets implements Disposable, AssetErrorListener {
         public final TextureAtlas.AtlasRegion arbusto;
         public BushAssets(TextureAtlas atlas) {
             arbusto = atlas.findRegion("arbusto");
+        }
+    }
+
+    public class SoundAssets {
+        public final TextureAtlas.AtlasRegion on;
+        public final TextureAtlas.AtlasRegion off;
+        public SoundAssets(TextureAtlas atlas) {
+            on = atlas.findRegion("on");
+            off = atlas.findRegion("off");
         }
     }
 

@@ -7,6 +7,7 @@ public class Constants {
 
     public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final float WORLD_SIZE = 140;
+    public static final float MENU_SIZE = 480;
     public static final int COINS = 6;
     public static final float PORTAL_RADIUS = 12;
     public static final float PORTAL_HEIGHT = 50;

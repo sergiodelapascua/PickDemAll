@@ -1,6 +1,5 @@
 package com.gdx.pickdem;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
@@ -51,7 +50,7 @@ public class GameplayScreen extends ScreenAdapter {
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         onscreenControls = new OnscreenControls();
-        if (onMobile()) {
+        if (Utils.onMobile()) {
             Gdx.input.setInputProcessor(onscreenControls);
         }
         startNewLevel();
@@ -63,10 +62,6 @@ public class GameplayScreen extends ScreenAdapter {
         levelEndOverlayStartTime = 0;
     }
 
-    public static boolean onMobile() {
-        return Gdx.app.getType() == Application.ApplicationType.Android || Gdx.app.getType() == Application.ApplicationType.iOS;
-    }
-
     @Override
     public void resize(int width, int height) {
         if(victory)
@@ -76,7 +71,7 @@ public class GameplayScreen extends ScreenAdapter {
         else {
             hud.viewport.update(width, height, true);
             viewport.update(width, height, true);
-            if(onMobile()) {
+            if(Utils.onMobile()) {
                 onscreenControls.viewport.update(width, height, true);
                 onscreenControls.recalculateButtonPositions();
             }
@@ -113,7 +108,7 @@ public class GameplayScreen extends ScreenAdapter {
         level.render(batch);
         hud.render(batch, level.getRobot().getCollectedCoins(), timer.getCountdown());
 
-        if(onMobile()) {
+        if(Utils.onMobile()) {
             onscreenControls.render(batch);
         }
         if(level.isComplete())
