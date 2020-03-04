@@ -1,0 +1,4 @@
+#Wed Mar 04 17:29:43 CET 2020
+base.0=/home/sergio/2DAM/JuegoAndroid/Proyecto/android/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
