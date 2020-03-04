@@ -53,6 +53,9 @@ public class Owl {
     private void moveLeft(float delta) {
         flyStartTime = TimeUtils.nanoTime();
         facing = Facing.LEFT;
+        if(Utils.onMobile())
+            position.x -= delta * Constants.OWL_MOVE_SPEED_X_MOBILE;
+        else
         position.x -= delta * Constants.OWL_MOVE_SPEED_X;
 
         if(robot.position.y + Constants.ROBOT_HEAD_HEIGHT > position.y)
@@ -65,7 +68,10 @@ public class Owl {
         flyStartTime = TimeUtils.nanoTime();
         facing = Facing.RIGHT;
 
-        position.x += delta * Constants.OWL_MOVE_SPEED_X;
+        if(Utils.onMobile())
+            position.x += delta * Constants.OWL_MOVE_SPEED_X_MOBILE;
+        else
+            position.x += delta * Constants.OWL_MOVE_SPEED_X;
 
         if(robot.position.y + Constants.ROBOT_HEAD_HEIGHT > position.y)
             position.y += delta * Constants.OWL_MOVE_SPEED_Y;

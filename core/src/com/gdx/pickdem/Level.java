@@ -84,41 +84,11 @@ public class Level {
         //TODO: Atento a que este activo
         if(!complete) {
             robot.update(delta, platforms);
-            //owl.update(delta);
+            owl.update(delta);
         }
     }
 
     public void render(SpriteBatch batch) {
-
-        /*renderer.begin(ShapeRenderer.ShapeType.Filled);
-
-        renderer.setColor(1, 0, 0, 1);
-        renderer.line(0,0,200,15);
-
-        renderer.line(10,0,10,80);
-        renderer.line(30,0,30,80);
-
-        float leftFoot = robot.position.x;
-        float rightFoot = robot.position.x + Constants.ROBOT_STANCE_WIDTH;
-        float middle = robot.position.x + Constants.ROBOT_STANCE_WIDTH/2;
-        //leftFoot = robot.position.x - Constants.ROBOT_STANCE_WIDTH / 2;
-        //rightFoot = robot.position.x + Constants.ROBOT_STANCE_WIDTH / 2;
-        renderer.setColor(1, 1, 1, 1);
-        renderer.line(owl.position.x, 0, owl.position.x, 100);
-        renderer.line(owl.position.x+Constants.OWL_STANCE_WIDTH, 0, owl.position.x + Constants.OWL_STANCE_WIDTH, 100);
-        renderer.line(0, owl.position.y, 100, owl.position.y);
-        //renderer.line(0, 0, 100, 100);
-        renderer.setColor(1, 0, 0, 1);
-        renderer.line(leftFoot, 0, leftFoot, 100);
-        renderer.setColor(0, 1, 0, 1);
-        renderer.line(rightFoot, 0, rightFoot, 100);
-        renderer.setColor(0, 0, 1, 1);
-        renderer.line(middle, 0, middle, 100);
-        renderer.line(-100, robot.position.y, 100, robot.positioRADIUSn.y);
-        renderer.line(-100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT, 100, robot.position.y+Constants.ROBOT_HEAD_HEIGHT);
-
-        //=========
-        renderer.end();*/
 
         batch.begin();
         water.render(batch);

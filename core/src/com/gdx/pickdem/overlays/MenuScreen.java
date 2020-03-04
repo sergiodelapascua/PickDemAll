@@ -133,13 +133,13 @@ public class MenuScreen extends InputAdapter implements Screen {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         Vector3 tmp = new Vector3(screenX,screenY,0);
         viewport.unproject(tmp);
-        Rectangle soundBounds = null;
+        Rectangle playBounds = null;
         if(!Utils.onMobile())
-            soundBounds = new Rectangle(Constants.MENU_SIZE/3, Constants.MENU_SIZE/3,Constants.MENU_SIZE/2,Constants.MENU_SIZE/8);
+            playBounds = new Rectangle(Constants.MENU_SIZE/3, Constants.MENU_SIZE/3,Constants.MENU_SIZE/2,Constants.MENU_SIZE/8);
         else
-            soundBounds = new Rectangle(Constants.MENU_SIZE/3, Constants.MENU_SIZE/3,Constants.MENU_SIZE/2,Constants.MENU_SIZE/8);
+            playBounds = new Rectangle(Constants.MENU_SIZE/3, Constants.MENU_SIZE/3,Constants.MENU_SIZE/2,Constants.MENU_SIZE/8);
 
-        if(soundBounds.contains(tmp.x,tmp.y)){
+        if(playBounds.contains(tmp.x,tmp.y)){
             Gdx.input.setInputProcessor(null);
             game.showGameScreen();
         }

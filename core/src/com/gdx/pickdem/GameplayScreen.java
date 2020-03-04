@@ -150,11 +150,14 @@ public class GameplayScreen extends ScreenAdapter {
         String nextLevel = "";
         if (loadedLevel.equals("")) {
             nextLevel = "Level1";
-            loadedLevel = "Level1";
+            loadedLevel = nextLevel;
         }else if(loadedLevel.equals("Level1")) {
             nextLevel = "Level2";
-            loadedLevel = "Level2";
+            loadedLevel = nextLevel;
         }else if(loadedLevel.equals("Level2")) {
+            nextLevel = "Level3";
+            loadedLevel = nextLevel;
+        }else if(loadedLevel.equals("Level3")) {
             victory = true;
         }
         if(!victory) {
