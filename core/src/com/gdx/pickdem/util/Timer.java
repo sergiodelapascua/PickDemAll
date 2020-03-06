@@ -18,6 +18,6 @@ public class Timer {
     }
 
     public int getCountdown(){
-        return (Utils.onMobile())? Math.max((100 - countdown), 0):Math.max((60 - countdown), 0);
+        return Math.max((Constants.TIME - countdown), 0);
     }
 }

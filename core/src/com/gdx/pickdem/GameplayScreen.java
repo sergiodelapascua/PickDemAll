@@ -2,6 +2,7 @@ package com.gdx.pickdem;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -35,17 +36,19 @@ public class GameplayScreen extends ScreenAdapter {
     private long levelEndOverlayStartTime;
     private Timer timer;
     private boolean gameOver;
-    private OnscreenControls onscreenControls;;
+    private OnscreenControls onscreenControls;
+    private Sound sound;
 
     private PickdemGame game;
 
     public GameplayScreen(PickdemGame g){
         this.game = g;
+        sound = Gdx.audio.newSound(Gdx.files.internal("music/game.ogg"));
+        sound.loop(0.5f);
     }
 
     @Override
     public void show() {
-
         batch = new SpriteBatch();
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
@@ -120,6 +123,7 @@ public class GameplayScreen extends ScreenAdapter {
         if (victory) {
             if (levelEndOverlayStartTime == 0) {
                 levelEndOverlayStartTime = TimeUtils.nanoTime();
+                sound.dispose();
                 victoryOverlay.init();
             }
             victoryOverlay.render(batch);
@@ -132,6 +136,7 @@ public class GameplayScreen extends ScreenAdapter {
         if (gameOver) {
             if (levelEndOverlayStartTime == 0) {
                 levelEndOverlayStartTime = TimeUtils.nanoTime();
+                sound.dispose();
                 gameOverOverlay.init();
             }
             gameOverOverlay.render(batch);
@@ -152,9 +157,13 @@ public class GameplayScreen extends ScreenAdapter {
             nextLevel = "Level1";
             loadedLevel = nextLevel;
         }else if(loadedLevel.equals("Level1")) {
+            Sound s = Gdx.audio.newSound(Gdx.files.internal("music/portal.ogg"));
+            s.play(0.5f);
             nextLevel = "Level2";
             loadedLevel = nextLevel;
         }else if(loadedLevel.equals("Level2")) {
+            Sound s = Gdx.audio.newSound(Gdx.files.internal("music/portal.ogg"));
+            s.play(0.5f);
             nextLevel = "Level3";
             loadedLevel = nextLevel;
         }else if(loadedLevel.equals("Level3")) {

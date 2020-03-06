@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 
 public class Constants {
+    public static final int TIME = 60;
 
     public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final float WORLD_SIZE = 140;

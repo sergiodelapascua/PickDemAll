@@ -2,6 +2,7 @@ package com.gdx.pickdem.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -144,6 +145,8 @@ public class Robot {
                     Assets.instance.coinAssets.coin.getRegionHeight()
             );
             if (robotBounds.overlaps(coinBounds)) {
+                Sound sound = Gdx.audio.newSound(Gdx.files.internal("music/coin.ogg"));
+                sound.play(0.5f);
                 coins.removeIndex(i);
                 collectedCoins++;
             }

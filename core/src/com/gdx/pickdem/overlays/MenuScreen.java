@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -36,6 +37,7 @@ public class MenuScreen extends InputAdapter implements Screen {
     private BitmapFont font;
     private boolean musicOn;
     private Stage stage;
+    public static Sound sound;
 
     public MenuScreen(PickdemGame game) {
         batch = new SpriteBatch();
@@ -60,7 +62,7 @@ public class MenuScreen extends InputAdapter implements Screen {
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 124;
         parameter.color = Color.BLACK;
-        font = generator.generateFont(parameter); // font size 34 pixels
+        font = generator.generateFont(parameter);
         generator.dispose();
         font.getData().setScale(1);
 
@@ -83,6 +85,8 @@ public class MenuScreen extends InputAdapter implements Screen {
         else
             button2.setPosition(60, 35);
         stage.addActor(button2);
+        sound = Gdx.audio.newSound(Gdx.files.internal("music/menu.ogg"));
+        sound.loop(0.5f);
     }
 
     @Override
@@ -140,6 +144,9 @@ public class MenuScreen extends InputAdapter implements Screen {
             playBounds = new Rectangle(Constants.MENU_SIZE/3, Constants.MENU_SIZE/3,Constants.MENU_SIZE/2,Constants.MENU_SIZE/8);
 
         if(playBounds.contains(tmp.x,tmp.y)){
+            sound.dispose();
+            Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("music/menu-navigate.ogg"));
+            sound2.play(0.5f);
             Gdx.input.setInputProcessor(null);
             game.showGameScreen();
         }
